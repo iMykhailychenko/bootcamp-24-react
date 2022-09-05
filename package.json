@@ -2,6 +2,7 @@
   "name": "bootcamp-24-react",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://iMykhailychenko.github.io/bootcamp-24-react/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
