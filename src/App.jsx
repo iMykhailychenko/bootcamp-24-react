@@ -1,6 +1,5 @@
-import { Link, UsersList } from './components';
-
 import usersJson from './assets/users.json';
+import { Link, UsersList } from './components';
 
 export const App = () => {
   return (
