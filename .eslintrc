@@ -3,12 +3,7 @@
     "browser": true,
     "es2021": true
   },
-  "extends": [
-    "airbnb",
-    "react-app",
-    "plugin:react/recommended",
-    "plugin:import/recommended"
-  ],
+  "extends": ["airbnb", "react-app", "plugin:react/recommended", "plugin:import/recommended"],
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
@@ -16,14 +11,12 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": [
-    "react",
-    "import"
-  ],
+  "plugins": ["react", "import"],
   "rules": {
     "max-len": "off",
     "prefer-template": "off",
     "no-alert": "off",
+    "react/jsx-fragments": "off",
     "function-paren-newline": "off",
     "implicit-arrow-linebreak": "off",
     "jsx-a11y/control-has-associated-label": "off",
