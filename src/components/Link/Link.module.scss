@@ -1,7 +1,15 @@
-.link {
-    color: red
+.base {
+    display: block;
+    border-radius: 5px;
+    padding: 10px 20px;
 }
 
-.btn {
-    color: blue
+.primary {
+    background: blue;
+    color: #fff
+}
+
+.secondary {
+    background: #eee;
+    color: #000;
 }

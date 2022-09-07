@@ -4,16 +4,18 @@ import { Link, UsersList } from './components';
 export const App = () => {
   return (
     <>
-      <Link title="To home page">My link</Link>
+      <Link primary title="To home page">
+        My link
+      </Link>
       <br />
-      <Link href="/product" title="To home page">
+      <Link secondary href="/product" title="To home page">
         My link
       </Link>
 
-      {/* <UsersList users={usersJson} /> */}
-      <UsersList users={usersJson}>
+      <UsersList users={usersJson} />
+      {/* <UsersList users={usersJson}>
         <Link title="To home page">My link</Link>
-      </UsersList>
+      </UsersList> */}
     </>
   );
 };
