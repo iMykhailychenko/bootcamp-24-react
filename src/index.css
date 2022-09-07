@@ -6,8 +6,38 @@
 }
 
 body {
+  min-height: 100vh;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
     'Droid Sans', 'Helvetica Neue', sans-serif;
 }
 
 
+a, button {
+  display: block;
+  background: none;
+  border: none;
+}
+
+svg {
+  display: block;
+  height: 1em;
+  width: 1em;
+}
+
+@keyframes sale {
+  0% {
+    color: red;
+  } 
+  30% {
+    color: green;
+  }
+  70% {
+    color: blue;
+  }
+}
+
+.sale {
+  font-size: 50px;
+  font-weight: 700;
+  animation: sale 1s ease-in-out infinite;
+}
