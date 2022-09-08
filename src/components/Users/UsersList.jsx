@@ -1,29 +1,32 @@
-import PropTypes from 'prop-types';
+import { Component } from 'react';
+
+import usersJson from '../../assets/users.json';
+import { UsersFilters } from '../UserFilters';
 
 import { UsersItem } from './UsersItem';
 
-export const UsersList = ({ users }) => {
-  return users.reduce((acc, user) => {
-    if (user.name.includes('a')) {
-      acc.push(
-        <div key={user.id}>
-          <UsersItem name={user.name} email={user.email} phone={user.phone} />
-        </div>,
-      );
-    }
+export class UsersList extends Component {
+  state = {
+    users: usersJson,
+  };
 
-    return acc;
-  }, []);
-};
+  handleDeleteUser = userId => {
+    this.setState(prevState => {
+      return { users: prevState.users.filter(user => user.id !== userId) };
+    });
+  };
 
-UsersList.propTypes = {
-  users: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-      email: PropTypes.string.isRequired,
-      phone: PropTypes.string.isRequired,
-    }),
-  ),
-  children: PropTypes.node,
-};
+  render() {
+    const { users } = this.state;
+
+    return (
+      <div className="mb-5">
+        <UsersFilters />
+
+        {users.map(user => (
+          <UsersItem key={user.id} user={user} onUserDelete={this.handleDeleteUser} />
+        ))}
+      </div>
+    );
+  }
+}

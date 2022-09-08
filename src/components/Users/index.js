@@ -1,2 +1,2 @@
-export * from './UsersItem';
 export * from './UsersList';
+export * from './UsersItem';

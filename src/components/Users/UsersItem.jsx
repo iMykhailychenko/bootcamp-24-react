@@ -1,33 +1,56 @@
-import { BiAddToQueue } from 'react-icons/bi';
-import styled from 'styled-components';
+import { PropTypes } from 'prop-types';
 
-import { Icon } from './Icon';
+export const UsersItem = ({ user, onUserDelete }) => {
+  const { id, name, email, bio, skils, isOpenToWork } = user;
 
-const Wrapper = styled.div`
-  padding: 10px 20px;
-  margin: 20px 0;
-  background-color: ${props => (props.online ? 'green' : 'red')};
+  const handelDelete = () => {
+    onUserDelete(id);
+  };
 
-  p:nth-of-type(1) {
-    color: red;
-  }
-
-  svg {
-    height: 20px;
-    width: 20px;
-  }
-`;
-
-const isOnline = true;
-
-export const UsersItem = ({ name, email, phone }) => {
   return (
-    <Wrapper title="title" online={isOnline}>
-      <BiAddToQueue />
-      <Icon />
-      <p>{name}</p>
-      <p>{email}</p>
-      <p>{phone}</p>
-    </Wrapper>
+    <div className="card my-3">
+      <div className="card-body">
+        <h5 className="card-title d-flex">
+          {name}
+          {isOpenToWork && <p className="badge bg-success ms-3">Open to work</p>}
+        </h5>
+
+        <h6 className="card-subtitle mb-2 text-muted">{email}</h6>
+        <p className="card-text">{bio}</p>
+
+        <div className="d-flex mb-2">
+          {skils.map(skil => (
+            <span key={skil} className="badge bg-dark me-1">
+              {skil}
+            </span>
+          ))}
+        </div>
+
+        <div className="d-flex">
+          <button
+            type="button"
+            className="card-link btn-link"
+            onClick={handelDelete}
+            // onClick={() => {
+            //   onUserDelete(id);
+            // }}
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
   );
+};
+
+UsersItem.propTypes = {
+  user: PropTypes.exact({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    bio: PropTypes.string.isRequired,
+    skils: PropTypes.arrayOf(PropTypes.string.isRequired),
+    isOpenToWork: PropTypes.bool.isRequired,
+  }).isRequired,
+  onUserDelete: PropTypes.func.isRequired,
 };
