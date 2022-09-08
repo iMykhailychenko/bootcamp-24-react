@@ -50,6 +50,8 @@
     "consistent-return": "off",
     "no-return-await": "off",
     "no-confusing-arrow": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
     "react/no-unknown-property": "off",
     "camelcase": "off",
     "jsx-a11y/no-distracting-elements": "off",

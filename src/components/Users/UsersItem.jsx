@@ -1,7 +1,11 @@
 import { PropTypes } from 'prop-types';
 
-export const UsersItem = ({ user }) => {
-  const { name, email, bio, skils, isOpenToWork } = user;
+export const UsersItem = ({ user, onUserDelete }) => {
+  const { id, name, email, bio, skils, isOpenToWork } = user;
+
+  const handelDelete = () => {
+    onUserDelete(id);
+  };
 
   return (
     <div className="card my-3">
@@ -23,7 +27,14 @@ export const UsersItem = ({ user }) => {
         </div>
 
         <div className="d-flex">
-          <button type="button" className="card-link btn-link">
+          <button
+            type="button"
+            className="card-link btn-link"
+            onClick={handelDelete}
+            // onClick={() => {
+            //   onUserDelete(id);
+            // }}
+          >
             Delete
           </button>
         </div>
@@ -41,4 +52,5 @@ UsersItem.propTypes = {
     skils: PropTypes.arrayOf(PropTypes.string.isRequired),
     isOpenToWork: PropTypes.bool.isRequired,
   }).isRequired,
+  onUserDelete: PropTypes.func.isRequired,
 };

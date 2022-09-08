@@ -6,10 +6,9 @@ import { UsersList } from './components/Users';
 export const App = () => {
   return (
     <Layout>
-      <Header title="Hello world!" />
-
-      <Counter />
       <Banner />
+      <Counter defaultValue={10} />
+      <Header title="Hello world!" />
       <UsersList />
     </Layout>
   );

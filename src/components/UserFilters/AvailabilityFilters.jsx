@@ -3,10 +3,10 @@ export const AvailabilityFilters = () => {
     <fieldset className="my-4">
       <legend>Availability:</legend>
 
-      <div class="form-check">
-        <label class="form-check-label">
+      <div className="form-check">
+        <label className="form-check-label">
           <span>Default checkbox</span>
-          <input class="form-check-input" type="checkbox" />
+          <input className="form-check-input" type="checkbox" />
         </label>
       </div>
     </fieldset>
