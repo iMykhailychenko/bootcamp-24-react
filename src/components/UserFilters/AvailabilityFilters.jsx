@@ -1,6 +1,6 @@
 export const AvailabilityFilters = () => {
   return (
-    <fieldset className="my-4">
+    <fieldset className="me-5">
       <legend>Availability:</legend>
 
       <div className="form-check">

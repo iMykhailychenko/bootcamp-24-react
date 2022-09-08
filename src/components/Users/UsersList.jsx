@@ -1,7 +1,6 @@
 import { Component } from 'react';
 
 import usersJson from '../../assets/users.json';
-import { UsersFilters } from '../UserFilters';
 
 import { UsersItem } from './UsersItem';
 
@@ -21,8 +20,6 @@ export class UsersList extends Component {
 
     return (
       <div className="mb-5">
-        <UsersFilters />
-
         {users.map(user => (
           <UsersItem key={user.id} user={user} onUserDelete={this.handleDeleteUser} />
         ))}
