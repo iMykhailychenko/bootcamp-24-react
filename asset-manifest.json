@@ -1,13 +1,14 @@
 {
   "files": {
-    "main.css": "/bootcamp-24-react/static/css/main.81675db8.css",
-    "main.js": "/bootcamp-24-react/static/js/main.c148b837.js",
+    "main.css": "/bootcamp-24-react/static/css/main.891acf04.css",
+    "main.js": "/bootcamp-24-react/static/js/main.235247f4.js",
+    "static/media/image.jpeg": "/bootcamp-24-react/static/media/image.bf770e0bed41a2bff177.jpeg",
     "index.html": "/bootcamp-24-react/index.html",
-    "main.81675db8.css.map": "/bootcamp-24-react/static/css/main.81675db8.css.map",
-    "main.c148b837.js.map": "/bootcamp-24-react/static/js/main.c148b837.js.map"
+    "main.891acf04.css.map": "/bootcamp-24-react/static/css/main.891acf04.css.map",
+    "main.235247f4.js.map": "/bootcamp-24-react/static/js/main.235247f4.js.map"
   },
   "entrypoints": [
-    "static/css/main.81675db8.css",
-    "static/js/main.c148b837.js"
+    "static/css/main.891acf04.css",
+    "static/js/main.235247f4.js"
   ]
 }
