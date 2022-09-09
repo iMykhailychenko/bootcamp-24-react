@@ -4,18 +4,20 @@ import { AvailabilityFilters } from './AvailabilityFilters';
 import { SearchInput } from './SearchInput';
 import { SkilsFilters } from './SkilsFilters';
 
-export const UserFilters = () => {
+export const UserFilters = ({ filters, onChangeSkils, onChangeSearch, onResetSearch, onChangeAvailability }) => {
   return (
     <>
       <div className="d-flex align-items-center mb-5">
-        <AvailabilityFilters />
-        <SkilsFilters />
-        <button type="button" class="btn btn-primary btn-lg ms-auto">
+        <AvailabilityFilters value={filters.isAvailable} onChangeAvailability={onChangeAvailability} />
+
+        <SkilsFilters value={filters.skils} onChangeSkils={onChangeSkils} />
+
+        <button type="button" className="btn btn-primary btn-lg ms-auto">
           <FiPlus />
         </button>
       </div>
 
-      <SearchInput />
+      <SearchInput value={filters.search} onResetSearch={onResetSearch} onChangeSearch={onChangeSearch} />
     </>
   );
 };
