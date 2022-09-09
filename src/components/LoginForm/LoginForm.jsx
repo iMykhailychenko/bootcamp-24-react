@@ -18,6 +18,7 @@ export class LoginForm extends Component {
   handleSubmit = event => {
     event.preventDefault();
 
+    // eslint-disable-next-line no-console
     console.log(this.state);
 
     this.setState({ email: '', password: '' });
