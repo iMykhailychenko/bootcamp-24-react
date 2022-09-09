@@ -1,30 +1,21 @@
 import { Component } from 'react';
 
-import usersJson from '../../assets/users.json';
-import { UsersFilters } from '../UserFilters';
+import NotFound from '../NotFound';
 
 import { UsersItem } from './UsersItem';
 
 export class UsersList extends Component {
-  state = {
-    users: usersJson,
-  };
-
-  handleDeleteUser = userId => {
-    this.setState(prevState => {
-      return { users: prevState.users.filter(user => user.id !== userId) };
-    });
-  };
-
   render() {
-    const { users } = this.state;
+    const { onUserDelete, users } = this.props;
+
+    if (!users.length) {
+      return <NotFound />;
+    }
 
     return (
       <div className="mb-5">
-        <UsersFilters />
-
         {users.map(user => (
-          <UsersItem key={user.id} user={user} onUserDelete={this.handleDeleteUser} />
+          <UsersItem key={user.id} user={user} onUserDelete={onUserDelete} />
         ))}
       </div>
     );
