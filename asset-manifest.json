@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/bootcamp-24-react/static/css/main.f2e86d7c.css",
+    "main.css": "/bootcamp-24-react/static/css/main.fd1357fc.css",
     "main.js": "/bootcamp-24-react/static/js/main.c8a23a67.js",
     "static/media/pulp-fiction-john-travolta.gif": "/bootcamp-24-react/static/media/pulp-fiction-john-travolta.59b46f4510af6cc07976.gif",
     "static/media/image.png": "/bootcamp-24-react/static/media/image.4c681b241e02299b56dc.png",
     "index.html": "/bootcamp-24-react/index.html",
-    "main.f2e86d7c.css.map": "/bootcamp-24-react/static/css/main.f2e86d7c.css.map",
+    "main.fd1357fc.css.map": "/bootcamp-24-react/static/css/main.fd1357fc.css.map",
     "main.c8a23a67.js.map": "/bootcamp-24-react/static/js/main.c8a23a67.js.map"
   },
   "entrypoints": [
-    "static/css/main.f2e86d7c.css",
+    "static/css/main.fd1357fc.css",
     "static/js/main.c8a23a67.js"
   ]
 }
