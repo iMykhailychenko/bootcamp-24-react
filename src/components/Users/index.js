@@ -1,2 +1,1 @@
-export * from './UsersList';
-export * from './UsersItem';
+export * from './Users';

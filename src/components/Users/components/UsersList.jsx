@@ -1,6 +1,6 @@
 import { Component } from 'react';
 
-import NotFound from '../NotFound';
+import NotFound from '../../NotFound';
 
 import { UsersItem } from './UsersItem';
 
