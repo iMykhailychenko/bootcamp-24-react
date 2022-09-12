@@ -1,27 +1,27 @@
-const skilsList = [
+const skillsList = [
   { value: 'all', label: 'All' },
   { value: 'react', label: 'React' },
   { value: 'angular', label: 'Angular' },
   { value: 'vue', label: 'Vue' },
 ];
 
-export const SkilsFilters = ({ value, onChangeSkils }) => {
+export const SkillsFilters = ({ value, onChangeSkills }) => {
   return (
     <fieldset className="ms-5">
-      <legend>Skils:</legend>
+      <legend>Skills:</legend>
 
       <div className="d-flex">
-        {skilsList.map(skil => (
-          <div key={skil.value} className="form-check me-4">
+        {skillsList.map(skill => (
+          <div key={skill.value} className="form-check me-4">
             <label className="form-check-label">
-              <span>{skil.label}</span>
+              <span>{skill.label}</span>
               <input
-                name="skil"
+                name="skill"
                 type="radio"
-                checked={value === skil.value}
-                value={skil.value}
+                checked={value === skill.value}
+                value={skill.value}
                 className="form-check-input"
-                onChange={onChangeSkils}
+                onChange={onChangeSkills}
               />
             </label>
           </div>

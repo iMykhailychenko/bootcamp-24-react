@@ -1,7 +1,7 @@
 import { PropTypes } from 'prop-types';
 
 export const UsersItem = ({ user, onUserDelete }) => {
-  const { id, name, email, bio, skils, isOpenToWork } = user;
+  const { id, name, email, bio, skills, isOpenToWork } = user;
 
   const handelDelete = () => {
     onUserDelete(id);
@@ -19,9 +19,9 @@ export const UsersItem = ({ user, onUserDelete }) => {
         <p className="card-text">{bio}</p>
 
         <div className="d-flex mb-2">
-          {skils.map(skil => (
-            <span key={skil} className="badge bg-dark me-1">
-              {skil}
+          {skills.map(skill => (
+            <span key={skill} className="badge bg-dark me-1">
+              {skill}
             </span>
           ))}
         </div>
@@ -49,7 +49,7 @@ UsersItem.propTypes = {
     name: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
     bio: PropTypes.string.isRequired,
-    skils: PropTypes.arrayOf(PropTypes.string.isRequired),
+    skills: PropTypes.arrayOf(PropTypes.string.isRequired),
     isOpenToWork: PropTypes.bool.isRequired,
   }).isRequired,
   onUserDelete: PropTypes.func.isRequired,
