@@ -1,4 +1,5 @@
 const skilsList = [
+  { value: 'all', label: 'All' },
   { value: 'react', label: 'React' },
   { value: 'angular', label: 'Angular' },
   { value: 'vue', label: 'Vue' },
