@@ -104,7 +104,7 @@ export class Users extends Component {
       <>
         <div className="d-flex align-items-center mb-5">
           <AvailabilityFilters value={isAvailable} onChangeAvailability={this.handleChangeAvailability} />
-          <SkillsFilters value={skills} onChangeSkils={this.handleChangeSkills} />
+          <SkillsFilters value={skills} onChangeSkills={this.handleChangeSkills} />
 
           <button type="button" className="btn btn-primary btn-lg ms-auto" onClick={this.toggleModal}>
             <FiPlus />
