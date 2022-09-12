@@ -16,8 +16,8 @@ export class Timer extends Component {
   render() {
     const { isOpen } = this.state;
     return (
-      <div className="d-flex my-5">
-        <button type="button" className="btn btn-primary my-5" onClick={this.toggle}>
+      <div className="d-flex mb-5">
+        <button type="button" className="btn btn-primary" onClick={this.toggle}>
           Open timer
         </button>
 

@@ -2,6 +2,7 @@ import { Component } from 'react';
 
 import { FiPlus } from 'react-icons/fi';
 
+import usersJson from '../../assets/users.json';
 import { ConfettiContainer } from '../Confetti/Confetti';
 import { Modal } from '../Modal/Modal';
 
@@ -26,19 +27,12 @@ export class Users extends Component {
   componentDidMount() {
     const localData = localStorage.getItem(USERS_LOCALSTORAGE_KEY);
 
-    if (localData) {
-      this.setState({ users: JSON.parse(localData) });
-    }
+    this.setState({ users: localData ? JSON.parse(localData) : usersJson });
   }
 
   componentDidUpdate(_, prevState, snapshot) {
-    // if () {
-
-    //   this.setState({ users: snapshot})
-    // }
-
     if (snapshot) {
-      window.scrollTo({ top: snapshot, beneath: 'smooth' });
+      // window.scrollTo({ top: snapshot, beneath: 'smooth' });
     }
 
     if (prevState.users.length !== this.state.users.length) {
