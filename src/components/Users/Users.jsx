@@ -3,16 +3,16 @@ import { Component } from 'react';
 import { FiPlus } from 'react-icons/fi';
 
 import usersJson from '../../assets/users.json';
-import { ConfettiContainer } from '../Confetti/Confetti';
-import { Modal } from '../Modal/Modal';
+import { ConfettiContainer } from '../Confetti';
+import { Modal } from '../Modal';
 
 import { AvailabilityFilters } from './components/AvailabilityFilters';
 import { NewUserForm } from './components/NewUserForm';
 import { SearchInput } from './components/SearchInput';
-import { SkilsFilters } from './components/SkilsFilters';
+import { SkillsFilters } from './components/SkillsFilters';
 import { UsersList } from './components/UsersList';
 
-const ALL_SKILS_VALUE = 'all';
+const ALL_SKILLS_VALUE = 'all';
 const USERS_LOCALSTORAGE_KEY = 'users-key';
 
 export class Users extends Component {
@@ -20,7 +20,7 @@ export class Users extends Component {
     users: [],
     isModalOpen: false,
     isAvailable: false,
-    skils: ALL_SKILS_VALUE,
+    skills: ALL_SKILLS_VALUE,
     search: '',
   };
 
@@ -46,9 +46,9 @@ export class Users extends Component {
     return snapshot;
   }
 
-  handleChangeSkils = event => {
+  handleChangeSkills = event => {
     const { value } = event.target;
-    this.setState({ skils: value });
+    this.setState({ skills: value });
   };
 
   handleChangeAvailability = () => {
@@ -77,8 +77,8 @@ export class Users extends Component {
     this.setState(prevState => ({ isModalOpen: !prevState.isModalOpen }));
   };
 
-  apllyFilters = () => {
-    const { users, search, skils, isAvailable } = this.state;
+  applyFilters = () => {
+    const { users, search, skills, isAvailable } = this.state;
 
     let newUsers = users;
 
@@ -90,21 +90,21 @@ export class Users extends Component {
       newUsers = newUsers.filter(user => user.isOpenToWork);
     }
 
-    if (skils !== ALL_SKILS_VALUE) {
-      newUsers = newUsers.filter(user => user.skils.includes(skils));
+    if (skills !== ALL_SKILLS_VALUE) {
+      newUsers = newUsers.filter(user => user.skills.includes(skills));
     }
 
     return newUsers;
   };
 
   render() {
-    const { isAvailable, skils, search, isModalOpen } = this.state;
+    const { isAvailable, skills, search, isModalOpen } = this.state;
 
     return (
       <>
         <div className="d-flex align-items-center mb-5">
           <AvailabilityFilters value={isAvailable} onChangeAvailability={this.handleChangeAvailability} />
-          <SkilsFilters value={skils} onChangeSkils={this.handleChangeSkils} />
+          <SkillsFilters value={skills} onChangeSkils={this.handleChangeSkills} />
 
           <button type="button" className="btn btn-primary btn-lg ms-auto" onClick={this.toggleModal}>
             <FiPlus />
@@ -119,7 +119,7 @@ export class Users extends Component {
           </Modal>
         )}
 
-        <UsersList users={this.apllyFilters()} onUserDelete={this.handleDeleteUser} />
+        <UsersList users={this.applyFilters()} onUserDelete={this.handleDeleteUser} />
 
         <ConfettiContainer />
       </>
