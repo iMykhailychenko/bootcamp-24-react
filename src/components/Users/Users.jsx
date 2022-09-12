@@ -31,20 +31,20 @@ export class Users extends Component {
   }
 
   componentDidUpdate(_, prevState, snapshot) {
-    if (snapshot) {
-      // window.scrollTo({ top: snapshot, beneath: 'smooth' });
-    }
+    // if (snapshot) {
+    //   // window.scrollTo({ top: snapshot, beneath: 'smooth' });
+    // }
 
     if (prevState.users.length !== this.state.users.length) {
       localStorage.setItem(USERS_LOCALSTORAGE_KEY, JSON.stringify(this.state.users));
     }
   }
 
-  getSnapshotBeforeUpdate() {
-    const snapshot = 100;
-
-    return snapshot;
-  }
+  // getSnapshotBeforeUpdate() {
+  //   const snapshot = 100;
+  //
+  //   return snapshot;
+  // }
 
   handleChangeSkills = event => {
     const { value } = event.target;
