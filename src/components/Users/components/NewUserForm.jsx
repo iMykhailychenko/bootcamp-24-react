@@ -1,6 +1,6 @@
 import { Component } from 'react';
 
-const skilsList = [
+const skillsList = [
   { value: 'react', label: 'React' },
   { value: 'angular', label: 'Angular' },
   { value: 'vue', label: 'Vue' },
@@ -11,7 +11,7 @@ export class NewUserForm extends Component {
     name: '',
     email: '',
     bio: '',
-    skils: [],
+    skills: [],
     isOpenToWork: false,
   };
 
@@ -24,15 +24,15 @@ export class NewUserForm extends Component {
     this.setState(prevState => ({ isOpenToWork: !prevState.isOpenToWork }));
   };
 
-  handleSkilsUpdate = event => {
+  handleSkillsUpdate = event => {
     const { name } = event.target;
 
     this.setState(prevState => {
-      if (prevState.skils.includes(name)) {
-        return { skils: prevState.skils.filter(skil => skil !== name) };
+      if (prevState.skills.includes(name)) {
+        return { skills: prevState.skils.filter(skill => skill !== name) };
       }
 
-      return { skils: [...prevState.skils, name] };
+      return { skills: [...prevState.skils, name] };
     });
   };
 
@@ -43,7 +43,7 @@ export class NewUserForm extends Component {
 
   render() {
     const { onModalClose } = this.props;
-    const { name, email, bio, skils, isOpenToWork } = this.state;
+    const { name, email, bio, skills, isOpenToWork } = this.state;
 
     return (
       <form action="#" autoComplete="off" className="w-100" onSubmit={this.handleSubmit}>
@@ -78,7 +78,7 @@ export class NewUserForm extends Component {
                 className="form-check-input"
                 type="checkbox"
                 name="isOpenToWork"
-                value={isOpenToWork}
+                checked={isOpenToWork}
                 onChange={this.handleChangeAvailability}
               />
             </label>
@@ -86,19 +86,19 @@ export class NewUserForm extends Component {
         </fieldset>
 
         <fieldset className="mt-3">
-          <legend className="h6">Skils:</legend>
+          <legend className="h6">Skills:</legend>
 
           <div className="d-flex">
-            {skilsList.map(skil => (
-              <div key={skil.value} className="form-check me-5">
+            {skillsList.map(skill => (
+              <div key={skill.value} className="form-check me-5">
                 <label className="form-check-label">
-                  <span>{skil.label}</span>
+                  <span>{skill.label}</span>
                   <input
-                    name={skil.value}
+                    name={skill.value}
                     type="checkbox"
                     className="form-check-input"
-                    checked={skils.includes(skil.value)}
-                    onChange={this.handleSkilsUpdate}
+                    checked={skills.includes(skill.value)}
+                    onChange={this.handleSkillsUpdate}
                   />
                 </label>
               </div>
