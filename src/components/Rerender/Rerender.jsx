@@ -13,6 +13,18 @@ class Button extends PureComponent {
   }
 }
 
+// {} === {} -> false
+
+// const Button = ({ label, onClick }) => {
+//   console.log('Button');
+
+//   return (
+//     <button className="btn btn-outline-light" type="button" onClick={onClick}>
+//       {label}
+//     </button>
+//   );
+// };
+
 export class Rerender extends Component {
   state = {
     counter: 0,

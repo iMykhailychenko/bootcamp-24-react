@@ -2,7 +2,6 @@ import { Component } from 'react';
 
 import { FiPlus } from 'react-icons/fi';
 
-import usersJson from '../../assets/users.json';
 import { ConfettiContainer } from '../Confetti/Confetti';
 import { Modal } from '../Modal/Modal';
 
@@ -13,15 +12,45 @@ import { SkilsFilters } from './components/SkilsFilters';
 import { UsersList } from './components/UsersList';
 
 const ALL_SKILS_VALUE = 'all';
+const USERS_LOCALSTORAGE_KEY = 'users-key';
 
 export class Users extends Component {
   state = {
-    users: usersJson,
+    users: [],
     isModalOpen: false,
     isAvailable: false,
     skils: ALL_SKILS_VALUE,
     search: '',
   };
+
+  componentDidMount() {
+    const localData = localStorage.getItem(USERS_LOCALSTORAGE_KEY);
+
+    if (localData) {
+      this.setState({ users: JSON.parse(localData) });
+    }
+  }
+
+  componentDidUpdate(_, prevState, snapshot) {
+    // if () {
+
+    //   this.setState({ users: snapshot})
+    // }
+
+    if (snapshot) {
+      window.scrollTo({ top: snapshot, beneath: 'smooth' });
+    }
+
+    if (prevState.users.length !== this.state.users.length) {
+      localStorage.setItem(USERS_LOCALSTORAGE_KEY, JSON.stringify(this.state.users));
+    }
+  }
+
+  getSnapshotBeforeUpdate() {
+    const snapshot = 100;
+
+    return snapshot;
+  }
 
   handleChangeSkils = event => {
     const { value } = event.target;
@@ -81,7 +110,6 @@ export class Users extends Component {
       <>
         <div className="d-flex align-items-center mb-5">
           <AvailabilityFilters value={isAvailable} onChangeAvailability={this.handleChangeAvailability} />
-
           <SkilsFilters value={skils} onChangeSkils={this.handleChangeSkils} />
 
           <button type="button" className="btn btn-primary btn-lg ms-auto" onClick={this.toggleModal}>
