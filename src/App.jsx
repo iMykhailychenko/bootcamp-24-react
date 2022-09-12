@@ -1,14 +1,14 @@
 import { ConfettiContainer } from './components/Confetti';
 import { Header, Layout } from './components/Layout';
 import { Rerender } from './components/Rerender';
-import { Timer } from './components/Timer/Timer';
+import { TimerComponent } from './components/Timer';
 import { Users } from './components/Users';
 
 export const App = () => {
   return (
     <Layout>
       <Header title="Hello world!" />
-      <Timer />
+      <TimerComponent />
 
       <Rerender />
       <Users />

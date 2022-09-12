@@ -1,10 +1,10 @@
 import { Component } from 'react';
 
-import { Modal } from '../Modal/Modal';
+import { Modal } from '../Modal';
 
 import { TimerModal } from './TimerModal';
 
-export class Timer extends Component {
+export class TimerComponent extends Component {
   state = {
     isOpen: false,
   };
