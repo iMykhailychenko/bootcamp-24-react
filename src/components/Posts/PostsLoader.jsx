@@ -1,6 +1,6 @@
 import { Skeleton } from '../Skeleton/Skeleton';
 
-export const PostsLoader = ({ amount = 9 }) => {
+export const PostsLoader = ({ amount = 2 }) => {
   return (
     <div className="container-fluid g-0 pb-5 mb-5">
       <div className="row">

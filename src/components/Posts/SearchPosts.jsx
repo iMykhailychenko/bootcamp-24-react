@@ -6,7 +6,7 @@ export class SearchPosts extends Component {
   render() {
     return (
       <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Type to search..." />
+        <input type="text" className="form-control" placeholder="Type to search..." />
         <Button>Search</Button>
       </div>
     );
