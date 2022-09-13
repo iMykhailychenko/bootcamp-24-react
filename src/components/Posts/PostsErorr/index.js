@@ -1,0 +1,1 @@
+export { PostsError } from './PostsErorr';
