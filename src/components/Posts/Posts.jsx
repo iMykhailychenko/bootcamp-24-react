@@ -13,13 +13,14 @@ export class Posts extends Component {
   state = {
     posts: null,
     status: Status.Idle,
+    isLoadMore: false,
   };
 
   async componentDidMount() {
-    this.fatchData();
+    this.fetchData();
   }
 
-  fatchData = async params => {
+  fetchData = async params => {
     this.setState({ status: Status.Loading });
     try {
       const posts = await getPostsService(params);
@@ -40,7 +41,7 @@ export class Posts extends Component {
   };
 
   handleSearchPosts = search => {
-    this.fatchData({ search });
+    this.fetchData({ search });
   };
 
   render() {
@@ -71,18 +72,20 @@ export class Posts extends Component {
         </div>
 
         <div className="pagination">
-          <div className="btn-group my-2 mx-auto btn-group-lg">
-            {[...Array(posts.total_pages)].map((_, index) => (
-              <Button
-                key={index}
-                disabled={index + 1 === posts.page}
-                onClick={() => {
-                  this.fatchData({ page: index + 1 });
-                }}
-              >
-                {index + 1}
-              </Button>
-            ))}
+          <div className="my-2 mx-auto">
+            <div className="btn-group">
+              {[...Array(posts.total_pages)].map((_, index) => (
+                <Button
+                  key={index}
+                  disabled={index + 1 === posts.page}
+                  onClick={() => {
+                    this.fetchData({ page: index + 1 });
+                  }}
+                >
+                  {index + 1}
+                </Button>
+              ))}
+            </div>
 
             <Button className="ms-4 btn-primary" onClick={this.handleLoadMore}>
               Load more
