@@ -31,6 +31,7 @@
     "react/prop-types": "off",
     "react/no-array-index-key": "off",
     "react/jsx-wrap-multilines": "off",
+    "react/button-has-type": "off",
     "no-param-reassign": "off",
     "max-classes-per-file": "off",
     "operator-linebreak": "off",

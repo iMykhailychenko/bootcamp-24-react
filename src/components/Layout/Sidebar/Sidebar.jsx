@@ -1,3 +1,5 @@
+import { EasterEgg } from './EasterEgg';
+
 export const Sidebar = () => {
   return (
     <aside className="nav nav-pills p-5 bg-light w-100" style={{ maxWidth: '300px', height: 'auto' }}>
@@ -15,6 +17,8 @@ export const Sidebar = () => {
           Settings
         </a>
       </div>
+
+      <EasterEgg />
     </aside>
   );
 };

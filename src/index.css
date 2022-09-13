@@ -36,8 +36,27 @@ svg {
   }
 }
 
-.sale {
-  font-size: 50px;
-  font-weight: 700;
-  animation: sale 1s ease-in-out infinite;
+.content {
+  min-height: 100vh;
+}
+
+.card-title {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  left: 0;
+}
+
+.pagination {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border-top: 1px solid #000;
 }
