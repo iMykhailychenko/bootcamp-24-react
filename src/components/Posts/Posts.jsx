@@ -17,11 +17,11 @@ export class Posts extends Component {
   };
 
   async componentDidMount() {
+    this.setState({ status: Status.Loading });
     this.fetchData();
   }
 
   fetchData = async params => {
-    this.setState({ status: Status.Loading });
     try {
       const posts = await getPostsService(params);
       this.setState({ posts, status: Status.Success });

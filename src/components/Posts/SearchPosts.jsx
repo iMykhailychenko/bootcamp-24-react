@@ -4,21 +4,23 @@ import { Button } from '../Button';
 
 export class SearchPosts extends Component {
   state = {
-    search: '',
+    search: this.props.search,
   };
 
   handleChange = event => {
     this.setState({ search: event.target.value });
   };
 
-  handleSubmit = () => {
+  handleSubmit = event => {
+    event.preventDefault();
+
     const { onSubmit } = this.props;
     onSubmit(this.state.search);
   };
 
   render() {
     return (
-      <div className="input-group mb-3">
+      <form className="input-group mb-3" onSubmit={this.handleSubmit}>
         <input
           type="text"
           className="form-control"
@@ -26,8 +28,8 @@ export class SearchPosts extends Component {
           value={this.state.search}
           onChange={this.handleChange}
         />
-        <Button onClick={this.handleSubmit}>Search</Button>
-      </div>
+        <Button type="submit">Search</Button>
+      </form>
     );
   }
 }

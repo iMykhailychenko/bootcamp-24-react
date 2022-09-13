@@ -25,11 +25,11 @@ export const PostsItem = ({ post }) => {
           </ul>
 
           <div className="d-flex">
-            <button type="button" className="btn btn-danger">
+            <button type="button" className="btn btn-link">
               Delete post
             </button>
 
-            <a href={`/posts/${post.id}`} className="btn btn-primary ms-3">
+            <a href={`/posts/${post.id}`} className="btn btn-link ms-3">
               Read post
             </a>
           </div>
