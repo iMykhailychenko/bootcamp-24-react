@@ -7,19 +7,19 @@ import { Button } from '../Button';
 export class CancelRequest extends Component {
   state = {};
 
-  async componentDidMount() {
+  handleClick = async () => {
     try {
-      const { data } = await axios.get('http://70.34.201.18:8080/posts?limit=100');
+      const { data } = await axios.get('http://localhost:4000');
       console.log(data);
     } catch (err) {
       console.log(err);
     }
-  }
+  };
 
   render() {
     return (
       <div className="my-4">
-        <Button>Request</Button>
+        <Button onClick={this.handleClick}>Request</Button>
         <Button className="btn-secondary mx-4">Reject</Button>
       </div>
     );
