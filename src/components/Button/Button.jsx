@@ -5,8 +5,8 @@ export const Button = ({ type = 'button', className = 'btn-primary', isLoading, 
     <button type={type} className={classNames('btn', className)} {...props} disabled={isLoading || disabled}>
       {isLoading ? (
         <>
-          <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true" />
-          <span class="visually-hidden">Loading...</span>
+          <span className="spinner-grow spinner-grow-sm" role="status" aria-hidden="true" />
+          <span className="visually-hidden">Loading...</span>
         </>
       ) : (
         children
