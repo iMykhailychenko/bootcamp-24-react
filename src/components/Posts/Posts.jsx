@@ -13,7 +13,7 @@ export class Posts extends Component {
   state = {
     posts: null,
     status: Status.Idle,
-    isLoadMore: false,
+    isLoadMore: Status.Idle,
   };
 
   async componentDidMount() {
@@ -34,9 +34,17 @@ export class Posts extends Component {
     const { posts } = this.state;
 
     if (posts.page < posts.total_pages) {
-      const resPosts = await getPostsService(posts.page + 1);
+      try {
+        this.setState({ isLoadMore: Status.Loading });
+        const resPosts = await getPostsService(posts.page + 1);
 
-      this.setState(prevState => ({ posts: { ...resPosts, data: [...prevState.posts.data, ...resPosts.data] } }));
+        this.setState(prevState => ({
+          isLoadMore: Status.Success,
+          posts: { ...resPosts, data: [...prevState.posts.data, ...resPosts.data] },
+        }));
+      } catch {
+        this.setState({ isLoadMore: Status.Error });
+      }
     }
   };
 
@@ -45,7 +53,7 @@ export class Posts extends Component {
   };
 
   render() {
-    const { posts, status } = this.state;
+    const { posts, status, isLoadMore } = this.state;
 
     if (status === Status.Loading || status === Status.Idle) {
       return <PostsLoader />;
@@ -87,7 +95,11 @@ export class Posts extends Component {
               ))}
             </div>
 
-            <Button className="ms-4 btn-primary" onClick={this.handleLoadMore}>
+            <Button
+              className="ms-4 btn-primary"
+              onClick={this.handleLoadMore}
+              isLoading={isLoadMore === Status.Loading}
+            >
               Load more
             </Button>
           </div>
