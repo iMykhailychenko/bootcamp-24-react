@@ -4,6 +4,7 @@ import { Button } from '../Button';
 
 import { PostsItem } from './PostsItem';
 import { PostsLoader } from './PostsLoader';
+import { SearchPosts } from './SearchPosts';
 
 const posts = [...Array(9)];
 
@@ -21,7 +22,7 @@ export class Posts extends Component {
 
     return (
       <>
-        
+        <SearchPosts />
 
         <div className="container-fluid g-0 pb-5 mb-5">
           <div className="row">
