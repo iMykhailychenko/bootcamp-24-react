@@ -36,7 +36,7 @@ export class Posts extends Component {
     if (posts.page < posts.total_pages) {
       try {
         this.setState({ isLoadMore: Status.Loading });
-        const resPosts = await getPostsService(posts.page + 1);
+        const resPosts = await getPostsService({ page: posts.page + 1 });
 
         this.setState(prevState => ({
           isLoadMore: Status.Success,
