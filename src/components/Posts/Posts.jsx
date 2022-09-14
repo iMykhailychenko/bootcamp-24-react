@@ -9,16 +9,29 @@ import { PostsItem } from './PostsItem';
 import { PostsLoader } from './PostsLoader';
 import { SearchPosts } from './SearchPosts';
 
+const HEADER_OFFSET = 450;
+
 export class Posts extends Component {
   state = {
     posts: null,
     status: Status.Idle,
     isLoadMore: Status.Idle,
+    search: '',
   };
 
   async componentDidMount() {
     this.setState({ status: Status.Loading });
     this.fetchData();
+  }
+
+  getSnapshotBeforeUpdate() {
+    return document.body.scrollHeight - HEADER_OFFSET;
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (prevState.posts && prevState.posts?.data?.length !== this.state.posts?.data?.length) {
+      window.scrollTo({ top: snapshot, behavior: 'smooth' });
+    }
   }
 
   fetchData = async params => {
@@ -31,12 +44,12 @@ export class Posts extends Component {
   };
 
   handleLoadMore = async () => {
-    const { posts } = this.state;
+    const { posts, search } = this.state;
 
     if (posts.page < posts.total_pages) {
       try {
         this.setState({ isLoadMore: Status.Loading });
-        const resPosts = await getPostsService({ page: posts.page + 1 });
+        const resPosts = await getPostsService({ search, page: posts.page + 1 });
 
         this.setState(prevState => ({
           isLoadMore: Status.Success,
@@ -48,12 +61,18 @@ export class Posts extends Component {
     }
   };
 
-  handleSearchPosts = search => {
-    this.fetchData({ search });
+  handleSearchPosts = event => {
+    event.preventDefault();
+
+    this.fetchData({ search: this.state.search });
+  };
+
+  handleSearchChange = event => {
+    this.setState({ search: event.target.value });
   };
 
   render() {
-    const { posts, status, isLoadMore } = this.state;
+    const { posts, status, isLoadMore, search } = this.state;
 
     if (status === Status.Loading || status === Status.Idle) {
       return <PostsLoader />;
@@ -69,7 +88,7 @@ export class Posts extends Component {
 
     return (
       <>
-        <SearchPosts onSubmit={this.handleSearchPosts} />
+        <SearchPosts value={search} onChange={this.handleSearchChange} onSubmit={this.handleSearchPosts} />
 
         <div className="container-fluid g-0 pb-5 mb-5">
           <div className="row">
@@ -87,7 +106,8 @@ export class Posts extends Component {
                   key={index}
                   disabled={index + 1 === posts.page}
                   onClick={() => {
-                    this.fetchData({ page: index + 1 });
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    this.fetchData({ search, page: index + 1 });
                   }}
                 >
                   {index + 1}
