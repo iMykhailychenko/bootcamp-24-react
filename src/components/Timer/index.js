@@ -1,0 +1,1 @@
+export { TimerComponent } from './TimerComponent';

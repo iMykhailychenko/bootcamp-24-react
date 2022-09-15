@@ -29,7 +29,9 @@ export class Posts extends Component {
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    if (prevState.posts && prevState.posts?.data?.length !== this.state.posts?.data?.length) {
+    const isLoadMore = prevState.posts && prevState.posts?.data?.length !== this.state.posts?.data?.length;
+
+    if (isLoadMore) {
       window.scrollTo({ top: snapshot, behavior: 'smooth' });
     }
   }
@@ -106,7 +108,6 @@ export class Posts extends Component {
                   key={index}
                   disabled={index + 1 === posts.page}
                   onClick={() => {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
                     this.fetchData({ search, page: index + 1 });
                   }}
                 >

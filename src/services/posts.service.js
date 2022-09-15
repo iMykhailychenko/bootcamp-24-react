@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+import { PAGE_LIMIT } from '../constants/pagination';
+
 const postsApi = axios.create({
   baseURL:
     process.env.NODE_ENV === 'production'
@@ -8,6 +10,6 @@ const postsApi = axios.create({
 });
 
 export const getPostsService = async params => {
-  const { data } = await postsApi.get('/posts', { params: { ...params, limit: 4 } });
+  const { data } = await postsApi.get('/posts', { params: { ...params, limit: PAGE_LIMIT } });
   return data;
 };
