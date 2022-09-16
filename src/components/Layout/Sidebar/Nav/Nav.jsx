@@ -1,11 +1,14 @@
 import { useState } from 'react';
 
+import { useAuth } from '../../../../context/auth.context';
 import { Button } from '../../../Button';
 import { CancelRequest } from '../../../CancelRequest';
 import { Modal } from '../../../Modal';
 import { Timer } from '../../../Timer';
 
 export const Nav = () => {
+  const { logout } = useAuth();
+
   const [isTimerOpen, setIsTimerOpen] = useState(false);
   const toggleTimer = () => setIsTimerOpen(prev => !prev);
 
@@ -42,7 +45,9 @@ export const Nav = () => {
         </Modal>
       )}
 
-      <Button className="btn-danger mt-auto">Log Out</Button>
+      <Button className="btn-danger mt-auto" onClick={logout}>
+        Log Out
+      </Button>
     </div>
   );
 };

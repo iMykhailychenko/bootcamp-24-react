@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 import { IoStopOutline, IoPlayOutline } from 'react-icons/io5';
 
@@ -23,15 +23,28 @@ const formatTime = time => {
 };
 
 export const Timer = () => {
+  const ref = useRef(null);
   const [time, setTime] = useState(0);
 
-  useEffect(() => {
-    const id = setInterval(() => {
-      setTime(prev => prev + 1);
-    }, 0);
+  const handleStartTimer = () => {
+    if (!ref.current) {
+      ref.current = setInterval(() => {
+        setTime(prev => prev + 1);
+        console.log('setInterval');
+      }, 0);
+    }
+  };
 
+  const handleStopTimer = () => {
+    if (ref.current) {
+      clearInterval(ref.current);
+      ref.current = null;
+    }
+  };
+
+  useEffect(() => {
     return () => {
-      clearTimeout(id);
+      handleStopTimer();
     };
   }, []);
 
@@ -40,11 +53,11 @@ export const Timer = () => {
       <p className="h1 mb-4 text-center">{formatTime(time)}</p>
 
       <div className="d-flex justify-content-center">
-        <Button className="btn-primary btn-lg mx-2">
+        <Button className="btn-primary btn-lg mx-2" onClick={handleStartTimer}>
           <IoPlayOutline />
         </Button>
 
-        <Button className="btn-danger btn-lg mx-2">
+        <Button className="btn-danger btn-lg mx-2" onClick={handleStopTimer}>
           <IoStopOutline />
         </Button>
       </div>

@@ -1,37 +1,86 @@
-import { Component } from 'react';
+import { useState, useCallback, memo } from 'react';
 
-class Button extends Component {
-  render() {
-    const { label, onClick } = this.props;
-    console.log('Button');
+// { name } === { name } // false
+// name === name // true
 
-    return (
-      <button className="btn btn-outline-light" type="button" onClick={onClick}>
-        {label}
-      </button>
-    );
-  }
-}
+// class Button extends PureComponent {
+//   render() {
+//     const { label, onClick } = this.props;
+//     console.log('Button');
 
-export class Rerender extends Component {
-  state = {
-    counter: 0,
-  };
+//     return (
+//       <button className="btn btn-outline-light" type="button" onClick={onClick}>
+//         {label}
+//       </button>
+//     );
+//   }
+// }
 
-  handleCount = () => {
-    this.setState(prevState => ({ counter: prevState.counter + 1 }));
-  };
+// const memo2 = callback => {
+//   const cache = {};
 
-  render() {
-    const { counter } = this.state;
-    console.log('Rerender');
+//   return props => {
+//     const result = callback(props);
+//   };
+// };
 
-    return (
-      <div className="d-flex flex-column justify-content-center align-items-center p-5 text-bg-dark rounded-3 mb-5">
-        <h2>{counter}</h2>
+// const Button2 = memo2(props => {}); // ()
 
-        <Button label="Click me!" onClick={this.handleCount} />
-      </div>
-    );
-  }
-}
+// Button2(props);
+
+const Button = memo(({ label, ref, onClick }) => {
+  console.log('Button');
+  return (
+    <button ref={ref} className="btn btn-outline-light" type="button" onClick={onClick}>
+      {label}
+    </button>
+  );
+});
+
+Button.displayName = 'Button';
+
+export const Rerender = () => {
+  // const ref = useRef();
+  const [counter, setCounter] = useState(0);
+
+  const handleCount = useCallback(() => {
+    setCounter(prev => prev + 1);
+  }, []);
+
+  // const handleCount = () => {
+  //   setCounter(prev => prev + 1);
+  // };
+
+  console.log('Rerender');
+
+  return (
+    <div className="d-flex flex-column justify-content-center align-items-center p-5 text-bg-dark rounded-3 mb-5">
+      <h2>{counter}</h2>
+
+      <Button ref={ref} label="Click me!" onClick={handleCount} />
+    </div>
+  );
+};
+
+// export class Rerender extends Component {
+//   state = {
+//     counter: 0,
+//   };
+
+//   handleCount = () => {
+//     this.setState(prevState => ({ counter: prevState.counter + 1 }));
+//   };
+
+//   render() {
+//     const { counter } = this.state;
+//     console.log('Rerender');
+
+//     return (
+//       <div className="d-flex flex-column justify-content-center align-items-center p-5 text-bg-dark rounded-3 mb-5">
+//         <h2>{counter}</h2>
+
+//         <Button label="Click me!" onClick={this.handleCount} />
+//       </div>
+//     );
+//   }
+// }

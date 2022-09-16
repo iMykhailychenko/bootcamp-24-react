@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 
 const COUNTER_KEY = 'counter-key';
 
@@ -24,39 +24,37 @@ const getLocalData = () => JSON.parse(localStorage.getItem(COUNTER_KEY));
 //    inititaState()
 // }
 
-export const Counter = () => {
-  const containerRef = useRef(null);
-  const valueRef = useRef(10);
-
+const useCounter = () => {
   const [android, setAndroid] = useState(() => getLocalData()?.android ?? 0);
   const [iphone, setIphone] = useState(() => getLocalData()?.iphone ?? 0);
-
-  console.log(valueRef);
-  useEffect(() => {
-    valueRef.current += 100;
-    console.log('useEffect', valueRef.current);
-  }, []);
 
   useEffect(() => {
     localStorage.setItem(COUNTER_KEY, JSON.stringify({ android, iphone }));
   }, [android, iphone]);
 
-  // const stateMap = {
-  //   android: setAndroid,
-  //   iphone: setIphone,
-  // };
-
-  const handleUpdate = event => {
+  const handleUpdate = useCallback(event => {
     const { name } = event.target;
     // stateMap[name](prev => prev + 1);
 
     switch (name) {
       case 'android':
-        setAndroid(prev => prev + 1);
+        setAndroid(prev => {
+          if (Math.random() > 0.5) {
+            return prev + 1;
+          }
+
+          return prev - 1;
+        });
         break;
 
       case 'iphone':
-        setIphone(prev => prev + 1);
+        setIphone(prev => {
+          if (Math.random() > 0.5) {
+            return prev + 1;
+          }
+
+          return prev - 1;
+        });
         break;
 
       default:
@@ -68,10 +66,36 @@ export const Counter = () => {
     // } else if (name === 'iphone') {
     //   setIphone(prev => prev + 1);
     // }
-  };
+  }, []);
+
+  const sum = useMemo(() => {
+    return android + iphone;
+  }, [android /* 10 */, iphone]); // 22 -> 1000
+
+  return { android, iphone, sum, handleUpdate };
+};
+
+export const Counter = () => {
+  const containerRef = useRef(null);
+  const valueRef = useRef(10);
+
+  const { android, iphone, sum, handleUpdate } = useCounter();
+
+  // console.log(valueRef);
+  useEffect(() => {
+    valueRef.current += 100;
+    console.log('useEffect', valueRef.current);
+  }, []);
+
+  // const stateMap = {
+  //   android: setAndroid,
+  //   iphone: setIphone,
+  // };
 
   return (
     <div ref={containerRef} className="mb-5 p-5 text-white bg-dark rounded-3">
+      <p>{sum}</p>
+
       <p className="text-center my-5" style={{ fontSize: 80 }}>
         Android: {android}
       </p>
@@ -84,7 +108,7 @@ export const Counter = () => {
           Android
         </button>
         <button type="button" name="iphone" className="btn p-3 btn-outline-light w-25 mx-2" onClick={handleUpdate}>
-          iPhone
+          Iphone
         </button>
       </div>
     </div>
