@@ -10,9 +10,7 @@ export const App = () => {
     <AuthProvider>
       <Layout>
         <Header title="Hello world!" />
-
         {/* <Memo /> */}
-
         {/* <Rerender /> */}
 
         <Counter />
