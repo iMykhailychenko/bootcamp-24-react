@@ -2,52 +2,46 @@ import { Component } from 'react';
 
 import axios from 'axios';
 
-import { Button } from '../Button';
-
-const SIGNAL_ERROR_CODE = 'ERR_CANCELED';
-
 export class CancelRequest extends Component {
   state = {
     isLoading: false,
   };
 
-  controller = new AbortController();
+  controller = null;
 
-  handleClick = async () => {
+  async componentDidMount() {
     this.setState({ isLoading: true });
+    this.controller = new AbortController();
     try {
       const { data } = await axios.get('http://localhost:4000', { signal: this.controller.signal });
       console.log(data);
     } catch (err) {
-      if (err.code === SIGNAL_ERROR_CODE) {
-        alert('Request canceled');
-        return;
-      }
-
       console.log(err);
     } finally {
+      this.controller = null;
       this.setState({ isLoading: false });
     }
-  };
+  }
 
-  handleReject = () => {
-    if (this.state.isLoading) {
+  componentWillUnmount() {
+    if (this.controller) {
+      console.log('controller.abort()');
       this.controller.abort();
     }
-  };
+  }
 
   render() {
     const { isLoading } = this.state;
-    return (
-      <div className="my-4">
-        <Button onClick={this.handleClick} isLoading={isLoading}>
-          Request
-        </Button>
 
-        <Button className="btn-secondary mx-4" onClick={this.handleReject}>
-          Reject
-        </Button>
-      </div>
+    return (
+      <>
+        <p>{isLoading ? 'Loading ...' : 'Done'}</p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto voluptas vero temporibus natus. Illum culpa ea
+          excepturi cumque sapiente itaque aut nam ipsa, veritatis, aliquam consequuntur, provident exercitationem.
+          Amet, cupiditate?
+        </p>
+      </>
     );
   }
 }

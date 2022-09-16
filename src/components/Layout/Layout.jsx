@@ -7,7 +7,7 @@ export const Layout = ({ children }) => {
     <div className="d-flex h-100">
       <Sidebar />
 
-      <main className="tab-content p-5 h-100" style={{ minHeight: '100vh', width: 'calc(100% - 300px)' }}>
+      <main className="tab-content p-5 h-100 col-10" style={{ minHeight: '100vh' }}>
         <div className="tab-pane fade show active">{children}</div>
       </main>
     </div>
