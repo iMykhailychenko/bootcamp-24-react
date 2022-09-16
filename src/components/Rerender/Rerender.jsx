@@ -28,10 +28,10 @@ import { useState, useCallback, memo } from 'react';
 
 // Button2(props);
 
-const Button = memo(({ label, ref, onClick }) => {
+const Button = memo(({ label, onClick }) => {
   console.log('Button');
   return (
-    <button ref={ref} className="btn btn-outline-light" type="button" onClick={onClick}>
+    <button className="btn btn-outline-light" type="button" onClick={onClick}>
       {label}
     </button>
   );
@@ -57,7 +57,7 @@ export const Rerender = () => {
     <div className="d-flex flex-column justify-content-center align-items-center p-5 text-bg-dark rounded-3 mb-5">
       <h2>{counter}</h2>
 
-      <Button ref={ref} label="Click me!" onClick={handleCount} />
+      <Button label="Click me!" onClick={handleCount} />
     </div>
   );
 };
