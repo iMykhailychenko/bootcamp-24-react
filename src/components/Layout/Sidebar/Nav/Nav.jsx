@@ -8,12 +8,18 @@ export const Nav = () => {
     <div className="d-flex flex-column justify-content-between h-100">
       <div className="d-flex flex-column justify-content-between">
         <h2 className="h3 mb-4">Welcome back!</h2>
-        <Button style={{ textAlign: 'left', marginLeft: '-10px' }} className="btn-light" disabled>
+        <a href="/" style={{ textAlign: 'left', marginLeft: '-10px' }} className="btn btn-light">
           Home page
-        </Button>
-        <Button style={{ textAlign: 'left', marginLeft: '-10px' }} className="btn-light" disabled>
+        </a>
+        <a href="/posts" style={{ textAlign: 'left', marginLeft: '-10px' }} className="btn btn-light">
+          Posts list
+        </a>
+        <a href="/new-post" style={{ textAlign: 'left', marginLeft: '-10px' }} className="btn btn-light">
           Create new post
-        </Button>
+        </a>
+        <a href="/exercises" style={{ textAlign: 'left', marginLeft: '-10px' }} className="btn btn-light">
+          React exercises
+        </a>
       </div>
 
       <Button className="btn-danger mt-auto" onClick={logout}>
