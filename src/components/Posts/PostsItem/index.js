@@ -1,0 +1,1 @@
+export { PostsItem } from './PostsItem';

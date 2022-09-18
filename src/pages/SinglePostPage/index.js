@@ -1,0 +1,1 @@
+export { SinglePostPage } from './SinglePostPage';

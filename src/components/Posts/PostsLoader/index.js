@@ -1,0 +1,1 @@
+export { PostsLoader } from './PostsLoader';
