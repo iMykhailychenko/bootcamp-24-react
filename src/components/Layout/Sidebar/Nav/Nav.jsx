@@ -8,6 +8,7 @@ export const Nav = () => {
     <div className="d-flex flex-column justify-content-between h-100">
       <div className="d-flex flex-column justify-content-between">
         <h2 className="h3 mb-4">Welcome back!</h2>
+
         <a href="/" style={{ textAlign: 'left', marginLeft: '-10px' }} className="btn btn-light">
           Home page
         </a>

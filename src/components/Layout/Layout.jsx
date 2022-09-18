@@ -1,13 +1,13 @@
-import PropTypes from 'prop-types';
 import { ToastContainer } from 'react-toastify';
 
+import { AuthProvider } from '../../context/auth.context';
 import { ConfettiContainer } from '../Confetti';
 
 import { Sidebar } from './Sidebar/Sidebar';
 
 export const Layout = ({ children }) => {
   return (
-    <>
+    <AuthProvider>
       <div className="d-flex h-100">
         <Sidebar />
 
@@ -18,10 +18,6 @@ export const Layout = ({ children }) => {
 
       <ToastContainer />
       <ConfettiContainer />
-    </>
+    </AuthProvider>
   );
-};
-
-Layout.propType = {
-  children: PropTypes.node.isRequired,
 };
