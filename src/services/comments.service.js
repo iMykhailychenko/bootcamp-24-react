@@ -5,7 +5,10 @@ const defaultParams = {
 };
 
 const commentsApi = axios.create({
-  baseURL: process.env.NODE_ENV === 'production' ? '/api' : 'http://70.34.201.18:8080',
+  baseURL:
+    process.env.NODE_ENV === 'production'
+      ? 'https://taupe-croissant-c4162a.netlify.app/api'
+      : 'http://70.34.201.18:8080',
 });
 
 export const createNewCommentService = async (postId, body) => {
