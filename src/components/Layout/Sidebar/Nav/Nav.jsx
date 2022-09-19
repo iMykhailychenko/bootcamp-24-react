@@ -1,49 +1,51 @@
-import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
 import { useAuth } from '../../../../context/auth.context';
 import { Button } from '../../../Button';
-import { CancelRequest } from '../../../CancelRequest';
-import { Modal } from '../../../Modal';
-import { Timer } from '../../../Timer';
 
 export const Nav = () => {
   const { logout } = useAuth();
 
-  const [isTimerOpen, setIsTimerOpen] = useState(false);
-  const toggleTimer = () => setIsTimerOpen(prev => !prev);
+  // to = "/" href = "/" -> href.includes(to) -> true
 
-  const [isRequestModalOpen, setIsRequestModalOpen] = useState(false);
-  const toggleRequestModal = () => setIsRequestModalOpen(prev => !prev);
+  // to = "/" href = "/posts" -> href.includes(to) -> true
+  // to = "/posts" href = "/posts" -> href.includes(to) -> true
 
   return (
     <div className="d-flex flex-column justify-content-between h-100">
       <div className="d-flex flex-column justify-content-between">
         <h2 className="h3 mb-4">Welcome back!</h2>
-        <Button style={{ textAlign: 'left', marginLeft: '-10px' }} className="btn-light" disabled>
+
+        <NavLink
+          to="/"
+          end
+          style={{ textAlign: 'left', marginLeft: '-10px' }}
+          className={({ isActive }) => (isActive ? 'btn btn-primary' : 'btn btn-light')}
+        >
           Home page
-        </Button>
-        <Button style={{ textAlign: 'left', marginLeft: '-10px' }} className="btn-light" disabled>
+        </NavLink>
+        <NavLink
+          to="/posts"
+          style={{ textAlign: 'left', marginLeft: '-10px' }}
+          className={({ isActive }) => (isActive ? 'btn btn-primary' : 'btn btn-light')}
+        >
+          Posts list
+        </NavLink>
+        <NavLink
+          to="/new-post"
+          style={{ textAlign: 'left', marginLeft: '-10px' }}
+          className={({ isActive }) => (isActive ? 'btn btn-primary' : 'btn btn-light')}
+        >
           Create new post
-        </Button>
-        <Button style={{ textAlign: 'left', marginLeft: '-10px' }} className="btn-light" onClick={toggleTimer}>
-          Open timer
-        </Button>
-        <Button style={{ textAlign: 'left', marginLeft: '-10px' }} className="btn-light" onClick={toggleRequestModal}>
-          CancelRequest
-        </Button>
+        </NavLink>
+        <NavLink
+          to="/exercises"
+          style={{ textAlign: 'left', marginLeft: '-10px' }}
+          className={({ isActive }) => (isActive ? 'btn btn-primary' : 'btn btn-light')}
+        >
+          React exercises
+        </NavLink>
       </div>
-
-      {isTimerOpen && (
-        <Modal onModalClose={toggleTimer}>
-          <Timer />
-        </Modal>
-      )}
-
-      {isRequestModalOpen && (
-        <Modal onModalClose={toggleRequestModal}>
-          <CancelRequest />
-        </Modal>
-      )}
 
       <Button className="btn-danger mt-auto" onClick={logout}>
         Log Out

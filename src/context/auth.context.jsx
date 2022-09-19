@@ -1,18 +1,26 @@
 import { createContext, useContext, useState } from 'react';
 
+import { useNavigate } from 'react-router-dom';
+
 import { confetti } from '../components/Confetti';
 
 export const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
-  const [isAuth, setIsAuth] = useState(true);
+  const [isAuth, setIsAuth] = useState(false);
   const [username, setUsername] = useState('');
+
+  const navigate = useNavigate();
 
   const login = (name, password) => {
     if (password === '123') {
       setIsAuth(true);
       setUsername(name);
       confetti.run();
+      // redirect
+      // navigate('/posts', { replace: true });
+      navigate('/posts');
+
       return;
     }
 
