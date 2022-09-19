@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 
+import { useParams, Link, Outlet } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import { Loader } from '../../components/Loader';
 import { getSinglePostService } from '../../services/posts.service';
 
 export const SinglePostPage = () => {
-  const postId = 10;
+  const { postId } = useParams();
 
   const [post, setPost] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -39,9 +40,11 @@ export const SinglePostPage = () => {
 
         <div dangerouslySetInnerHTML={{ __html: post.content.replace(/\n/g, '<br/>') }} />
 
-        <a href={`/posts/${postId}/comments`} className="btn btn-primary my-4">
+        <Link to={`/posts/${postId}/comments`} className="btn btn-primary my-4">
           Vew post comments
-        </a>
+        </Link>
+
+        <Outlet />
       </>
     )
   );

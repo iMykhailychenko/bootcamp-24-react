@@ -1,1 +1,1 @@
-export { SinglePostPage } from './SinglePostPage';
+export { SinglePostPage as default } from './SinglePostPage';

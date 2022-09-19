@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from '@types/react';
+import { useCallback, useEffect, useState } from 'react';
 
 const COUNTER_KEY = 'counter-key';
 
@@ -17,23 +17,11 @@ export const useCounter = () => {
 
     switch (name) {
       case 'android':
-        setAndroid(prev => {
-          if (Math.random() > 0.5) {
-            return prev + 1;
-          }
-
-          return prev - 1;
-        });
+        setAndroid(prev => prev + 1);
         break;
 
       case 'iphone':
-        setIphone(prev => {
-          if (Math.random() > 0.5) {
-            return prev + 1;
-          }
-
-          return prev - 1;
-        });
+        setIphone(prev => prev + 1);
         break;
 
       default:
