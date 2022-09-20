@@ -1,10 +1,12 @@
+import { Suspense } from 'react';
+
 import { NavLink, Outlet } from 'react-router-dom';
 
 const subPages = [
-  { href: '/exercises/timer', title: 'Timer' },
-  { href: '/exercises/cancel-request', title: 'Cancel Request' },
-  { href: '/exercises/counter', title: 'Counter' },
-  { href: '/exercises/re-render', title: 'Re-render' },
+  { href: 'timer', title: 'Timer' },
+  { href: 'cancel-request', title: 'Cancel Request' },
+  { href: 'counter', title: 'Counter' },
+  { href: 're-render', title: 'Re-render' },
 ];
 
 export const ExercisesPage = () => {
@@ -20,7 +22,9 @@ export const ExercisesPage = () => {
         ))}
       </ul>
 
-      <Outlet />
+      <Suspense fallback={<p>Loading in exersises</p>}>
+        <Outlet />
+      </Suspense>
     </>
   );
 };
