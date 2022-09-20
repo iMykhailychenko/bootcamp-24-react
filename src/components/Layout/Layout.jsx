@@ -1,3 +1,5 @@
+import { Suspense } from 'react';
+
 import { Outlet } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
@@ -14,7 +16,9 @@ export const Layout = () => {
 
         <main className="tab-content p-5 h-100 col-10" style={{ minHeight: '100vh' }}>
           <div className="tab-pane fade show active">
-            <Outlet />
+            <Suspense fallback={<p>Loading...</p>}>
+              <Outlet />
+            </Suspense>
           </div>
         </main>
       </div>
