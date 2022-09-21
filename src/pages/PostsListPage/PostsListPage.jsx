@@ -1,11 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 
 import { useSearchParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 import { Button } from '../../components/Button';
 import { PostsError, PostsItem, PostsLoader, PostsNotFound, PostsSearch } from '../../components/Posts';
 import { Status } from '../../constants/fetch-status';
-import { getPostsService } from '../../services/posts.service';
+import { deletePostService, getPostsService } from '../../services/posts.service';
 
 export const PostsListPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -15,15 +16,25 @@ export const PostsListPage = () => {
   const [posts, setPosts] = useState(null);
   const [status, setStatus] = useState(Status.Idle);
 
-  useEffect(() => {
+  const fetchPosts = useCallback(params => {
     setStatus(Status.Loading);
-    getPostsService({ search, page })
+    getPostsService(params)
       .then(data => {
         setStatus(Status.Success);
         setPosts(data);
       })
       .catch(() => setStatus(Status.Error));
-  }, [search, page]);
+  }, []);
+
+  useEffect(() => {
+    fetchPosts({ search, page });
+  }, [search, page, fetchPosts]);
+
+  const handleDeletePost = useCallback(id => {
+    deletePostService(id)
+      .then(() => toast.success('You have successfully deleted the post'))
+      .then(() => fetchPosts({ search, page }));
+  }, [fetchPosts, page, search]);
 
   if (status === Status.Loading || status === Status.Idle) {
     return <PostsLoader />;
@@ -44,7 +55,7 @@ export const PostsListPage = () => {
       <div className="container-fluid g-0 pb-5 mb-5">
         <div className="row">
           {posts.data.map(post => (
-            <PostsItem key={post.id} post={post} />
+            <PostsItem key={post.id} post={post} onDelete={handleDeletePost} />
           ))}
         </div>
       </div>

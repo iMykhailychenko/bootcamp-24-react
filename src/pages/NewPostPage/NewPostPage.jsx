@@ -6,11 +6,13 @@ import { toast } from 'react-toastify';
 import { Loader } from '../../components/Loader';
 import { createNewPostService } from '../../services/posts.service';
 
+const img =
+  'https://images.unsplash.com/photo-1663620779258-0d48644b5193?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2970&q=80';
+
 const initialState = {
   title: '',
   content: '',
-  image: '',
-  preview_image: '',
+  image: img,
 };
 
 export const NewPostPage = () => {
@@ -36,7 +38,7 @@ export const NewPostPage = () => {
     }
 
     setIsLoading(true);
-    createNewPostService(form)
+    createNewPostService({ ...form, preview_image: form.image })
       .then(post => {
         navigate(`/posts/${post.id}`, { state: { isPostCreated: true } });
         toast.success('You have successfully created a new post!');
@@ -78,22 +80,6 @@ export const NewPostPage = () => {
               placeholder="Post content"
             />
           </label>
-        </div>
-
-        <div className="mb-3">
-          <label className="d-block form-label">
-            <p>Preview image url (small image)</p>
-            <input
-              type="text"
-              name="preview_image"
-              value={form.preview_image}
-              onChange={handleChange}
-              className="form-control"
-              placeholder="https://example.com/samll_image.jpeg"
-            />
-          </label>
-
-          {form.image && <img src={form.preview_image} className="img-thumbnail" alt="" style={{ height: '200px' }} />}
         </div>
 
         <div className="mb-3">
