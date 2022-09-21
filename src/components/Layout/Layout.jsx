@@ -14,7 +14,7 @@ export const Layout = () => {
       <div className="d-flex h-100">
         <Sidebar />
 
-        <main className="tab-content p-5 h-100 col-10" style={{ minHeight: '100vh' }}>
+        <main className="tab-content p-5 h-100 col-9" style={{ minHeight: '100vh' }}>
           <div className="tab-pane fade show active">
             <Suspense fallback={<p>Loading...</p>}>
               <Outlet />

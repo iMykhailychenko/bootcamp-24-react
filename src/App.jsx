@@ -3,23 +3,22 @@ import { lazy } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 import { Layout } from './components/Layout';
-import { CancelRequest } from './pages/ExercisesPage/CancelRequest/CancelRequest';
-import { RerenderPage } from './pages/ExercisesPage/RerenderPage/RerenderPage';
-import { TimerPage } from './pages/ExercisesPage/TimerPage/TimerPage';
-import { NewPostPage } from './pages/NewPostPage/NewPostPage';
-import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
-import { CommentsPage } from './pages/SinglePostPage/CommentsPage/CommentsPage';
-import { SinglePostPage } from './pages/SinglePostPage/SinglePostPage';
+
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
 const HomePage = lazy(() => import('./pages/HomePage'));
+const NewPostPage = lazy(() => import('./pages/NewPostPage'));
 const PostsListPage = lazy(() => import('./pages/PostsListPage'));
+
+const SinglePostPage = lazy(() => import('./pages/SinglePostPage'));
+const CommentsPage = lazy(() => import('./pages/SinglePostPage/CommentsPage'));
+
 const ExercisesPage = lazy(() => import('./pages/ExercisesPage'));
 const CounterPage = lazy(() => import('./pages/ExercisesPage/CounterPage'));
-
-// const Suspense = ({children, fallback}) => {
-//  const isLoading = true
-//  return  isLoading ? fallback : children
-// }
+const TimerPage = lazy(() => import('./pages/ExercisesPage/TimerPage'));
+const RerenderPage = lazy(() => import('./pages/ExercisesPage/RerenderPage'));
+const CancelRequestPage = lazy(() => import('./pages/ExercisesPage/CancelRequest'));
+const UseReducerPage = lazy(() => import('./pages/ExercisesPage/UseReducerPage'));
 
 export const App = () => {
   return (
@@ -39,7 +38,8 @@ export const App = () => {
           <Route path="/exercises" element={<ExercisesPage />}>
             <Route index element={<Navigate to="timer" />} />
 
-            <Route path="cancel-request" element={<CancelRequest />} />
+            <Route path="reducer" element={<UseReducerPage />} />
+            <Route path="cancel-request" element={<CancelRequestPage />} />
             <Route path="counter" element={<CounterPage />} />
             <Route path="re-render" element={<RerenderPage />} />
             <Route path="timer" element={<TimerPage />} />

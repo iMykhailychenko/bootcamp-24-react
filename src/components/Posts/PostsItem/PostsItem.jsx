@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../../../context/auth.context';
 import { cutString } from '../../../helpers/cut-string';
 
-export const PostsItem = ({ post }) => {
+export const PostsItem = ({ post, onDelete }) => {
   const { isAuth } = useAuth();
   const location = useLocation();
 
@@ -31,7 +31,7 @@ export const PostsItem = ({ post }) => {
 
           {isAuth && (
             <div className="d-flex">
-              <button type="button" className="btn btn-link">
+              <button type="button" className="btn btn-link" onClick={() => onDelete(post.id)}>
                 Delete post
               </button>
 
