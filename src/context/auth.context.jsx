@@ -7,7 +7,7 @@ import { confetti } from '../components/Confetti';
 export const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
-  const [isAuth, setIsAuth] = useState(false);
+  const [isAuth, setIsAuth] = useState(true);
   const [username, setUsername] = useState('');
 
   const navigate = useNavigate();

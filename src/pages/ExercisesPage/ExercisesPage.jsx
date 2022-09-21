@@ -7,6 +7,7 @@ const subPages = [
   { href: 'cancel-request', title: 'Cancel Request' },
   { href: 'counter', title: 'Counter' },
   { href: 're-render', title: 'Re-render' },
+  { href: 'reducer', title: 'Use reducer counter' },
 ];
 
 export const ExercisesPage = () => {
