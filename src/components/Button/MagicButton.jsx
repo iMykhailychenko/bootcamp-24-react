@@ -30,6 +30,7 @@ export const MagicButton = ({
     <button
       ref={ref}
       type={type}
+      onClick={handleMouseEnter}
       onMouseEnter={handleMouseEnter}
       className={classNames('btn', css.btn, className)}
       disabled={isLoading || disabled}
