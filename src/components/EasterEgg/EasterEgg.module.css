@@ -1,0 +1,18 @@
+@keyframes cat {
+  0% {
+    transform: translate(-100%, 0);
+  }
+  100% {
+    transform: translate(100vw, 0);
+  }
+}
+
+.img {
+  position: absolute;
+  transform: translate(-100%, 0);
+  top: -50px;
+  left: 0;
+  height: 250px;
+  animation: cat 3s linear 5s;
+  pointer-events: none;
+}
