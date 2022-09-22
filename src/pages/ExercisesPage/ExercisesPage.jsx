@@ -8,6 +8,7 @@ const subPages = [
   { href: 'counter', title: 'Counter' },
   { href: 're-render', title: 'Re-render' },
   { href: 'reducer', title: 'Use reducer counter' },
+  { href: 'users', title: 'Users list' },
 ];
 
 export const ExercisesPage = () => {
@@ -23,7 +24,7 @@ export const ExercisesPage = () => {
         ))}
       </ul>
 
-      <Suspense fallback={<p>Loading in exersises</p>}>
+      <Suspense fallback={<p>Loading in exercises</p>}>
         <Outlet />
       </Suspense>
     </>

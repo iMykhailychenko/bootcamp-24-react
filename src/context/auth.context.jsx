@@ -17,8 +17,6 @@ export const AuthProvider = ({ children }) => {
       setIsAuth(true);
       setUsername(name);
       confetti.run();
-      // redirect
-      // navigate('/posts', { replace: true });
       navigate('/posts');
 
       return;
