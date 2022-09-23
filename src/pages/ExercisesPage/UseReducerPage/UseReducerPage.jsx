@@ -17,7 +17,7 @@ export const UseReducerPage = () => {
           type="button"
           name="android"
           className="btn p-3 btn-outline-light w-25 mx-2"
-          onClick={() => dispatch(minusAction() /* -> { type: MINUS, payload: 1 } */)}
+          onClick={() => dispatch(minusAction(1) /* -> { type: MINUS, payload: 1 } */)}
         >
           -1
         </button>
@@ -25,7 +25,7 @@ export const UseReducerPage = () => {
           type="button"
           name="iphone"
           className="btn p-3 btn-outline-light w-25 mx-2"
-          onClick={() => dispatch(plusAction() /* -> { type: PLUS, payload: 1 } */)}
+          onClick={() => dispatch(plusAction(1) /* -> { type: PLUS, payload: 1 } */)}
         >
           +1
         </button>

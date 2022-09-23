@@ -10,7 +10,7 @@ import { NewUserForm } from '../../../components/Users/NewUserForm';
 import { SearchInput } from '../../../components/Users/SearchInput';
 import { SkillsFilters } from '../../../components/Users/SkillsFilters';
 import { UsersList } from '../../../components/Users/UsersList';
-import { deleteUserAction, toggleNewUserModalAction, createUserAction } from '../../../redux/users/action.users';
+import { deleteUserAction, createNewUserAction, toggleModalAction } from '../../../redux/users/slice.users';
 
 const ALL_SKILLS_VALUE = 'all';
 
@@ -19,10 +19,10 @@ export const UsersPage = () => {
 
   const { isModalOpen, data: users } = useSelector(state => state.users);
 
-  const toggleModal = () => dispatch(toggleNewUserModalAction());
+  const toggleModal = () => dispatch(toggleModalAction());
 
   const handleDeleteUser = userId => dispatch(deleteUserAction(userId) /* { type: DELTE_USER, payload: userId } */);
-  const handleCreateNewUser = user => dispatch(createUserAction(user));
+  const handleCreateNewUser = user => dispatch(createNewUserAction(user));
 
   const [isAvailable, setIsAvailable] = useState(false);
   const handleChangeAvailability = () => setIsAvailable(prev => !prev);

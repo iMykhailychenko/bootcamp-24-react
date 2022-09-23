@@ -1,9 +1,18 @@
-import { combineReducers } from 'redux';
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
 import { counterReducer } from './counter/reducer.counter';
-import { usersReducer } from './users/reducer.users';
+import { usersReducer } from './users/slice.users';
 
-export const rootReducer = combineReducers({
+const persistConfig = {
+  key: 'app',
+  storage,
+  whitelist: ['data'],
+};
+
+const persistedUsersReducer = persistReducer(persistConfig, usersReducer);
+
+export const rootReducer = {
   counter: counterReducer,
-  users: usersReducer,
-});
+  users: persistedUsersReducer,
+};
