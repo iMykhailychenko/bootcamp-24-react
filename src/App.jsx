@@ -20,6 +20,7 @@ const RerenderPage = lazy(() => import('./pages/ExercisesPage/RerenderPage'));
 const CancelRequestPage = lazy(() => import('./pages/ExercisesPage/CancelRequest'));
 const UseReducerPage = lazy(() => import('./pages/ExercisesPage/UseReducerPage'));
 const UsersPage = lazy(() => import('./pages/ExercisesPage/UsersPage'));
+const Middleware = lazy(() => import('./pages/ExercisesPage/Middleware'));
 
 export const App = () => {
   return (
@@ -44,6 +45,7 @@ export const App = () => {
             <Route path="re-render" element={<RerenderPage />} />
             <Route path="timer" element={<TimerPage />} />
             <Route path="users" element={<UsersPage />} />
+            <Route path="middleware" element={<Middleware />} />
           </Route>
 
           <Route path="*" element={<NotFoundPage />} />
