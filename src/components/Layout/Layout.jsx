@@ -5,7 +5,6 @@ import { ToastContainer } from 'react-toastify';
 
 import { AuthProvider } from '../../context/auth.context';
 import { ConfettiContainer } from '../Confetti';
-import { EasterEgg } from '../EasterEgg/EasterEgg';
 
 import { Sidebar } from './Sidebar/Sidebar';
 
@@ -20,8 +19,6 @@ export const Layout = () => {
             <Suspense fallback={<p>Loading...</p>}>
               <Outlet />
             </Suspense>
-
-            <EasterEgg />
           </div>
         </main>
       </div>

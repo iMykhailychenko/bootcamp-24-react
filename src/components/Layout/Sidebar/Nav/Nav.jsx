@@ -6,11 +6,6 @@ import { Button } from '../../../Button';
 export const Nav = () => {
   const { logout } = useAuth();
 
-  // to = "/" href = "/" -> href.includes(to) -> true
-
-  // to = "/" href = "/posts" -> href.includes(to) -> true
-  // to = "/posts" href = "/posts" -> href.includes(to) -> true
-
   return (
     <div className="d-flex flex-column justify-content-between h-100">
       <div className="d-flex flex-column justify-content-between">
@@ -20,28 +15,39 @@ export const Nav = () => {
           to="/"
           end
           style={{ textAlign: 'left', marginLeft: '-10px' }}
-          className={({ isActive }) => (isActive ? 'btn btn-primary' : 'btn btn-light')}
+          className={({ isActive }) => (isActive ? 'btn btn-primary mb-2' : 'btn btn-light mb-2')}
         >
           Home page
         </NavLink>
+
         <NavLink
           to="/posts"
           style={{ textAlign: 'left', marginLeft: '-10px' }}
-          className={({ isActive }) => (isActive ? 'btn btn-primary' : 'btn btn-light')}
+          className={({ isActive }) => (isActive ? 'btn btn-primary mb-2' : 'btn btn-light mb-2')}
         >
           Posts list
         </NavLink>
+
+        <NavLink
+          to="/rtk-posts"
+          style={{ textAlign: 'left', marginLeft: '-10px' }}
+          className={({ isActive }) => (isActive ? 'btn btn-primary mb-2' : 'btn btn-light mb-2')}
+        >
+          RTK Posts list
+        </NavLink>
+
         <NavLink
           to="/new-post"
           style={{ textAlign: 'left', marginLeft: '-10px' }}
-          className={({ isActive }) => (isActive ? 'btn btn-primary' : 'btn btn-light')}
+          className={({ isActive }) => (isActive ? 'btn btn-primary mb-2' : 'btn btn-light mb-2')}
         >
           Create new post
         </NavLink>
+
         <NavLink
           to="/exercises"
           style={{ textAlign: 'left', marginLeft: '-10px' }}
-          className={({ isActive }) => (isActive ? 'btn btn-primary' : 'btn btn-light')}
+          className={({ isActive }) => (isActive ? 'btn btn-primary mb-2' : 'btn btn-light mb-2')}
         >
           React exercises
         </NavLink>

@@ -1,24 +1,12 @@
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
-import { useDispatch } from 'react-redux';
-import { Link, useLocation, useSearchParams } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import { useAuth } from '../../../context/auth.context';
 import { cutString } from '../../../helpers/cut-string';
-import { deletePostThunk } from '../../../redux/posts/thunk.posts';
 
-export const PostsItem = ({ post }) => {
+export const PostsItem = ({ post, onDelete }) => {
   const { isAuth } = useAuth();
   const location = useLocation();
-
-  const [searchParams] = useSearchParams();
-  const page = searchParams.get('page');
-  const search = searchParams.get('search') ?? '';
-
-  const dispatch = useDispatch();
-
-  const handleDelete = () => {
-    dispatch(deletePostThunk({ postId: post.id, params: { page, search } }));
-  };
 
   return (
     <div className="col-12 col-xl-6 col-xxl-4 mb-4">
@@ -43,7 +31,7 @@ export const PostsItem = ({ post }) => {
 
           {isAuth && (
             <div className="d-flex">
-              <button type="button" className="btn btn-link" onClick={handleDelete}>
+              <button type="button" className="btn btn-link" onClick={() => onDelete(post.id)}>
                 Delete post
               </button>
 
