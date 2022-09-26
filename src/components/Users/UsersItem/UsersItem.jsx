@@ -1,7 +1,16 @@
 import { PropTypes } from 'prop-types';
+import { useDispatch } from 'react-redux';
 
-export const UsersItem = ({ user, onUserDelete }) => {
+import { deleteUserAction } from '../../../redux/users/slice.users';
+
+export const UsersItem = ({ user }) => {
   const { id, name, email, bio, skills, isOpenToWork } = user;
+
+  const dispatch = useDispatch();
+
+  const handleDeleteUser = () => {
+    dispatch(deleteUserAction(id));
+  };
 
   return (
     <div className="card my-3">
@@ -23,7 +32,7 @@ export const UsersItem = ({ user, onUserDelete }) => {
         </div>
 
         <div className="d-flex">
-          <button type="button" className="card-link btn-link" onClick={() => onUserDelete(id)}>
+          <button type="button" className="card-link btn-link" onClick={handleDeleteUser}>
             Delete
           </button>
         </div>
@@ -41,5 +50,4 @@ UsersItem.propTypes = {
     skills: PropTypes.arrayOf(PropTypes.string.isRequired),
     isOpenToWork: PropTypes.bool.isRequired,
   }).isRequired,
-  onUserDelete: PropTypes.func.isRequired,
 };

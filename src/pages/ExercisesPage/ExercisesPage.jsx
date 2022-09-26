@@ -3,11 +3,7 @@ import { Suspense } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 
 const subPages = [
-  { href: 'timer', title: 'Timer' },
-  { href: 'cancel-request', title: 'Cancel Request' },
   { href: 'counter', title: 'Counter' },
-  { href: 're-render', title: 'Re-render' },
-  { href: 'reducer', title: 'Use reducer counter' },
   { href: 'users', title: 'Users list' },
 ];
 
