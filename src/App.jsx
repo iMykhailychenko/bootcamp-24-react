@@ -32,7 +32,7 @@ export const App = () => {
           <Route path="/new-post" element={<NewPostPage />} />
 
           <Route path="/exercises" element={<ExercisesPage />}>
-            <Route index element={<Navigate to="counter" />} />
+            <Route index element={<Navigate to="users" />} />
             <Route path="counter" element={<CounterPage />} />
             <Route path="users" element={<UsersPage />} />
           </Route>

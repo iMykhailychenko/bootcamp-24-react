@@ -3,8 +3,8 @@ import { Suspense } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 
 const subPages = [
-  { href: 'counter', title: 'Counter' },
   { href: 'users', title: 'Users list' },
+  { href: 'counter', title: 'Counter' },
 ];
 
 export const ExercisesPage = () => {
