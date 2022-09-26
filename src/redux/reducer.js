@@ -2,6 +2,7 @@ import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
 import { counterReducer } from './counter/reducer.counter';
+import { postsReducer } from './posts/slice.posts';
 import { usersReducer } from './users/slice.users';
 
 const persistConfig = {
@@ -15,4 +16,5 @@ const persistedUsersReducer = persistReducer(persistConfig, usersReducer);
 export const rootReducer = {
   counter: counterReducer,
   users: persistedUsersReducer,
+  posts: postsReducer,
 };
