@@ -1,5 +1,6 @@
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+
 import { getPostsService } from '../services/posts.service';
 
 import { initialState } from './initial-state';
