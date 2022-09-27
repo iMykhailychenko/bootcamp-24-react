@@ -7,24 +7,20 @@ import { Modal } from '../../../components/Modal';
 import { NewUserForm } from '../../../components/Users/NewUserForm';
 import { SearchInput } from '../../../components/Users/SearchInput';
 import { UsersList } from '../../../components/Users/UsersList';
+import {
+  selectFilteredUsers,
+  selectOpenToWorkTotal,
+  selectUsersIsModalOpen,
+} from '../../../redux/users/selector.users';
 import { toggleModalAction } from '../../../redux/users/slice.users';
 
 export const UsersPage = () => {
   const dispatch = useDispatch();
   const toggleModal = () => dispatch(toggleModalAction());
 
-  const data = useSelector(state => state.users.data);
-  const search = useSelector(state => state.users.search);
-  const isModalOpen = useSelector(state => state.users.isModalOpen);
-
-  const filteredUsers = data.filter(user => user.name.toLowerCase().includes(search.toLowerCase()));
-  const openToWorkTotal = data.reduce((acc, item) => {
-    if (item.isOpenToWork) {
-      acc += 1;
-    }
-
-    return acc;
-  }, 0);
+  const filteredUsers = useSelector(selectFilteredUsers);
+  const openToWorkTotal = useSelector(selectOpenToWorkTotal);
+  const isModalOpen = useSelector(selectUsersIsModalOpen);
 
   return (
     <>
