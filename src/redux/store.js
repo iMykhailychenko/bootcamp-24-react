@@ -2,11 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { persistStore, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
 
 import { rootReducer } from './reducer';
-
-// const middleware = store => next => action => {
-//   console.log(action);
-//   return next(action);
-// };
+import { postsApi } from './rtk-posts/api.rtk-posts';
 
 export const store = configureStore({
   reducer: rootReducer,
@@ -17,8 +13,7 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }),
-  // }).concat(middleware),
+    }).concat([postsApi.middleware]),
 });
 
 export const persistor = persistStore(store);

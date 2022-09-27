@@ -1,7 +1,7 @@
 import { UsersItem } from '../UsersItem';
 import { UsersNotFound } from '../UsersNotFound';
 
-export const UsersList = ({ onUserDelete, users }) => {
+export const UsersList = ({ users }) => {
   if (!users.length) {
     return <UsersNotFound />;
   }
@@ -9,7 +9,7 @@ export const UsersList = ({ onUserDelete, users }) => {
   return (
     <div className="mb-5">
       {users.map(user => (
-        <UsersItem key={user.id} user={user} onUserDelete={onUserDelete} />
+        <UsersItem key={user.id} user={user} />
       ))}
     </div>
   );

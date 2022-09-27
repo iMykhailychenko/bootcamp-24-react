@@ -1,20 +1,26 @@
 import { useReducer } from 'react';
 
+import { useDispatch } from 'react-redux';
+
+import { createNewUserAction, toggleModalAction } from '../../../redux/users/slice.users';
 import { MagicButton, Button } from '../../Button';
 
 import { BIO_TYPE, defaultValue, EMAIL_TYPE, NAME_TYPE, OPEN_TO_WORK_TYPE, utils, skillsList } from './utils';
 
-export const NewUserForm = ({ onModalClose, onSubmit }) => {
-  const [state, dispatch] = useReducer(utils, defaultValue);
+export const NewUserForm = ({ onModalClose }) => {
+  const dispatch = useDispatch();
+  const [state, userDispatch] = useReducer(utils, defaultValue);
 
   const handleChange = event => {
     const { name, value } = event.target;
-    dispatch({ type: name, payload: value });
+    userDispatch({ type: name, payload: value });
   };
 
   const handleSubmit = event => {
     event.preventDefault();
-    onSubmit(state);
+
+    dispatch(createNewUserAction(state));
+    dispatch(toggleModalAction());
   };
 
   const { name, email, bio, skills, isOpenToWork } = state;
