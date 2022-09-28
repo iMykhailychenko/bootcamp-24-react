@@ -3,7 +3,6 @@ import storage from 'redux-persist/lib/storage';
 
 import { counterReducer } from './counter/reducer.counter';
 import { postsReducer } from './posts/slice.posts';
-import { postsApi } from './rtk-posts/api.rtk-posts';
 import { usersReducer } from './users/slice.users';
 
 const persistConfig = {
@@ -18,6 +17,4 @@ export const rootReducer = {
   counter: counterReducer,
   users: persistedUsersReducer,
   posts: postsReducer,
-
-  [postsApi.reducerPath]: postsApi.reducer,
 };

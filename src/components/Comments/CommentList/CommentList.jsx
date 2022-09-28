@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { formatDistance } from 'date-fns';
 import { toast } from 'react-toastify';
 
-import { deleteCommentService, getCommentsListService } from '../../services/comments.service';
+import { deleteCommentService, getCommentsListService } from '../../../services/comments.service';
 
 export const CommentList = ({ comments, setComments }) => {
   const postId = 10; // hardcoded
