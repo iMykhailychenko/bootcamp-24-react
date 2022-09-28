@@ -31,6 +31,7 @@ export const postsApi = createApi({
         url: `posts/${postId}`,
         method: 'DELETE',
       }),
+      invalidatesTags: (result, error, id) => [{ type: 'Posts', id }],
     }),
   }),
 });

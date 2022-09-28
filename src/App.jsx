@@ -10,6 +10,7 @@ const HomePage = lazy(() => import('./pages/HomePage'));
 const RtkPostsPage = lazy(() => import('./pages/RtkPostsPage'));
 const NewPostPage = lazy(() => import('./pages/NewPostPage'));
 const PostsListPage = lazy(() => import('./pages/PostsListPage'));
+const ReactQueryPostsPage = lazy(() => import('./pages/ReactQueryPostsPage'));
 
 const SinglePostPage = lazy(() => import('./pages/SinglePostPage'));
 const CommentsPage = lazy(() => import('./pages/SinglePostPage/CommentsPage'));
@@ -27,6 +28,7 @@ export const App = () => {
 
           <Route path="/posts" element={<PostsListPage />} />
           <Route path="/rtk-posts" element={<RtkPostsPage />} />
+          <Route path="/react-query-posts" element={<ReactQueryPostsPage />} />
 
           <Route path="/posts/:postId" element={<SinglePostPage />}>
             <Route path="comments" element={<CommentsPage />} />

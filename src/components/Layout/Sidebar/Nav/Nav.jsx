@@ -29,6 +29,14 @@ export const Nav = () => {
         </NavLink>
 
         <NavLink
+          to="/react-query-posts"
+          style={{ textAlign: 'left', marginLeft: '-10px' }}
+          className={({ isActive }) => (isActive ? 'btn btn-primary mb-2' : 'btn btn-light mb-2')}
+        >
+          React Query Posts
+        </NavLink>
+
+        <NavLink
           to="/rtk-posts"
           style={{ textAlign: 'left', marginLeft: '-10px' }}
           className={({ isActive }) => (isActive ? 'btn btn-primary mb-2' : 'btn btn-light mb-2')}

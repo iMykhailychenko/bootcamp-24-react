@@ -33,3 +33,19 @@ const postsSlice = createSlice({
 });
 
 export const postsReducer = postsSlice.reducer;
+
+// state -> reducer -> newState
+// state -> newState -> reducer -> newState
+
+// let a = 1
+// let b = 2
+
+// let sum = a + b // 3
+
+// a = 4
+// sum -> 6
+
+// const obj = Proxy({ a: 2, b: 3 })
+
+// obj.a = 3 -> () => {}
+// delete obj.a -> () => {}

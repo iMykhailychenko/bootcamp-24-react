@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { omitBy } from 'lodash-es';
 
 import { PAGE_LIMIT } from '../constants/pagination';
 
@@ -10,7 +11,7 @@ const postsApi = axios.create({
 });
 
 export const getPostsService = async params => {
-  const { data } = await postsApi.get('/posts', { params: { ...params, limit: PAGE_LIMIT } });
+  const { data } = await postsApi.get('/posts', { params: { ...omitBy(params, item => !item), limit: PAGE_LIMIT } });
   return data;
 };
 
@@ -27,3 +28,15 @@ export const getSinglePostService = async (id, params) => {
 export const deletePostService = id => {
   return postsApi.delete(`/posts/${id}`);
 };
+
+// sum(1, 2) -> 3
+// sum(1, 2) -> 3
+// sum(1, 2) -> 3
+
+// Date.now() -> 123
+// Date.now() -> 124
+// Date.now() -> 125
+
+// Math.random() -> 0.23454
+// Math.random() -> 0.45432
+// Math.random() -> 0.76543
