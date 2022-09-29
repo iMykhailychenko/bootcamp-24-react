@@ -1,10 +1,17 @@
 import { useState } from 'react';
 
-import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+
+import { loginThunk } from '../../redux/auth/thunk.auth';
 
 const year = new Date().getFullYear();
 
 export const LoginPage = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [values, setValues] = useState({
     email: '',
     password: '',
@@ -15,11 +22,16 @@ export const LoginPage = () => {
     setValues(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = event => {
+  const handleSubmit = async event => {
     event.preventDefault();
 
-    // TODO - Login here
-    console.log('Login');
+    try {
+      await dispatch(loginThunk(values)).unwrap();
+      toast.success('Login successful');
+      navigate('/', { replace: true });
+    } catch {
+      toast.error('Error');
+    }
   };
 
   return (

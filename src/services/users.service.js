@@ -1,24 +1,20 @@
-import axios from 'axios';
-
-const usersApi = axios.create({
-  baseURL: 'http://70.34.201.18:4444',
-});
+import { privateApi, publicApi } from '../http/http';
 
 export const createUserService = body => {
-  return usersApi.post('/users/create', body);
+  return publicApi.post('/users/create', body);
 };
 
 export const loginUserService = async body => {
-  const { data } = await usersApi.post('/users/login', body);
+  const { data } = await publicApi.post('/users/login', body);
   return data;
 };
 
-export const getUsersService = async () => {
-  const { data } = await usersApi.get('/users/profile');
+export const getProfileService = async () => {
+  const { data } = await privateApi.get('/users/profile');
   return data;
 };
 
 export const updateUser = async body => {
-  const { data } = await usersApi.put('/users/profile', body);
+  const { data } = await privateApi.put('/users/profile', body);
   return data;
 };

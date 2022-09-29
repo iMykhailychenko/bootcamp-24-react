@@ -1,8 +1,12 @@
-import { lazy } from 'react';
+import { lazy, useEffect } from 'react';
 
+import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 import { Layout } from './components/Layout';
+import { Status } from './constants/fetch-status';
+import { selectAuth } from './redux/auth/selector.auth';
+import { getProfileThunk } from './redux/profile/thunk.profile';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
 const NewPostPage = lazy(() => import('./pages/NewPostPage'));
@@ -20,6 +24,15 @@ const JoinPage = lazy(() => import('./pages/JoinPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
 export const App = () => {
+  const dispatch = useDispatch();
+  const { status } = useSelector(selectAuth);
+
+  useEffect(() => {
+    if (status === Status.Success) {
+      dispatch(getProfileThunk());
+    }
+  }, [dispatch, status]);
+
   return (
     <BrowserRouter basename="/bootcamp-24-react/">
       <Routes>

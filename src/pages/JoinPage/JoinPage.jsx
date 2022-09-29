@@ -1,8 +1,11 @@
 import { useState } from 'react';
 
-import { Link } from 'react-router-dom';
+import { omit } from 'lodash-es';
+import { useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
+import { loginThunk } from '../../redux/auth/thunk.auth';
 import { createUserService } from '../../services/users.service';
 
 const year = new Date().getFullYear();
@@ -14,6 +17,9 @@ const initialState = {
 };
 
 export const JoinPage = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [isLoading, setIsLoading] = useState(false);
   const [values, setValues] = useState(initialState);
 
@@ -26,15 +32,14 @@ export const JoinPage = () => {
     event.preventDefault();
 
     setIsLoading(true);
+
     createUserService(values)
       .then(() => {
-        toast.success('Success');
-
-        // TODO - Login here
-        console.log('Login here');
+        toast.success('Success!');
+        dispatch(loginThunk(omit(values, 'first_name', 'last_name'))).unwrap();
       })
-      .catch(() => toast.error('Error'))
-      .finally(() => setIsLoading(false));
+      .then(() => navigate('/', { replace: true }))
+      .catch(() => toast.error('Error'));
   };
 
   return (
