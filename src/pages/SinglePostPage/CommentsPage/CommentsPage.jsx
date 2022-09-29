@@ -1,10 +1,14 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-import { CommentForm } from '../../../components/CommentForm';
-import { CommentList } from '../../../components/CommentList';
+import { CommentForm, CommentList } from '../../../components/Comments';
 
 export const CommentsPage = () => {
   const [comments, setComments] = useState(null);
+
+  useEffect(() => {
+    window.scrollTo({ top: document.body.offsetHeight, behavior: 'smooth' });
+  }, []);
+
   return (
     <>
       <CommentForm setComments={setComments} />

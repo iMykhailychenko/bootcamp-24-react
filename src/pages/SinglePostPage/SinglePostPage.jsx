@@ -40,9 +40,19 @@ export const SinglePostPage = () => {
   return (
     post && (
       <>
-        <Link to={location.state?.from ?? '/posts'} className="btn btn-primary mb-5">
-          Back
-        </Link>
+        <div className="d-flex mb-5">
+          <Link to={location.state?.from ?? '/posts'} className="btn btn-primary">
+            Back
+          </Link>
+
+          <Link
+            to={`/posts/${postId}/comments`}
+            state={location.state?.from ? location.state : null} // { from: location } -> { location }
+            className="btn btn-primary ms-4"
+          >
+            Vew post comments
+          </Link>
+        </div>
 
         <img
           src={post.image}

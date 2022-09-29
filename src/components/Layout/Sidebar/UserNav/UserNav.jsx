@@ -1,15 +1,25 @@
+import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
-import { useAuth } from '../../../../context/auth.context';
+import { token } from '../../../../http/http';
+import { logoutAction } from '../../../../redux/auth/slice.auth';
 import { Button } from '../../../Button';
+import { UserCard } from '../../../UserCard/UserCard';
 
-export const Nav = () => {
-  const { logout } = useAuth();
+export const UserNav = () => {
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    dispatch(logoutAction());
+    token.unset();
+  };
 
   return (
     <div className="d-flex flex-column justify-content-between h-100">
       <div className="d-flex flex-column justify-content-between">
         <h2 className="h3 mb-4">Welcome back!</h2>
+
+        <UserCard />
 
         <NavLink
           to="/"
@@ -29,14 +39,6 @@ export const Nav = () => {
         </NavLink>
 
         <NavLink
-          to="/rtk-posts"
-          style={{ textAlign: 'left', marginLeft: '-10px' }}
-          className={({ isActive }) => (isActive ? 'btn btn-primary mb-2' : 'btn btn-light mb-2')}
-        >
-          RTK Posts list
-        </NavLink>
-
-        <NavLink
           to="/new-post"
           style={{ textAlign: 'left', marginLeft: '-10px' }}
           className={({ isActive }) => (isActive ? 'btn btn-primary mb-2' : 'btn btn-light mb-2')}
@@ -53,7 +55,7 @@ export const Nav = () => {
         </NavLink>
       </div>
 
-      <Button className="btn-danger mt-auto" onClick={logout}>
+      <Button onClick={handleLogout} className="btn-danger mt-auto">
         Log Out
       </Button>
     </div>

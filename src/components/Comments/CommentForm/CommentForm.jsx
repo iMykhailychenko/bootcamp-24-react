@@ -3,7 +3,7 @@ import { useState } from 'react';
 import classNames from 'classnames';
 import { toast } from 'react-toastify';
 
-import { createNewCommentService } from '../../services/comments.service';
+import { createNewCommentService } from '../../../services/comments.service';
 
 export const CommentForm = ({ setComments }) => {
   const postId = 10; // hardcoded
