@@ -14,6 +14,14 @@ export const NotAuth = () => {
         </NavLink>
 
         <NavLink
+          to="/posts"
+          style={{ textAlign: 'left', marginLeft: '-10px' }}
+          className={({ isActive }) => (isActive ? 'btn btn-primary mb-2' : 'btn btn-light mb-2')}
+        >
+          Posts list
+        </NavLink>
+
+        <NavLink
           to="/login"
           style={{ textAlign: 'left', marginLeft: '-10px' }}
           className={({ isActive }) => (isActive ? 'btn btn-primary mb-2' : 'btn btn-light mb-2')}

@@ -4,14 +4,14 @@ export const publicApi = axios.create({
   baseURL:
     process.env.NODE_ENV === 'production'
       ? 'https://taupe-croissant-c4162a.netlify.app/api'
-      : 'http://70.34.201.18:8080',
+      : 'http://70.34.201.18:4444',
 });
 
 export const privateApi = axios.create({
   baseURL:
     process.env.NODE_ENV === 'production'
       ? 'https://taupe-croissant-c4162a.netlify.app/api'
-      : 'http://70.34.201.18:8080',
+      : 'http://70.34.201.18:4444',
 });
 
 export const token = {
