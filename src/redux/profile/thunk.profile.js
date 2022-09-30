@@ -15,6 +15,7 @@ export const getProfileThunk = createAsyncThunk('profile/getProfile', async (_, 
     token.set(auth.token_type + ' ' + auth.access_token); // -> 'Bearer sdvsdvsdvds...'
     return await getProfileService();
   } catch {
+    token.unset();
     return rejectWithValue();
   }
 });

@@ -1,0 +1,38 @@
+.text:global(.enter) {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* <p className="text_23dw enter-done"> */
+/* <p className="text_23dw"><p className="enter-done"> ... </p></p> */
+
+.text:global(.exit) {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 0.3s ease-in-out;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  height: 20px;
+}
+
+.item:global(.enter) {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+.text:global(.enter-done),
+.item:global(.enter-done) {
+  opacity: 1;
+  transform: translateY(0);
+  transition: 0.3s ease-in-out;
+}
+
+.item:global(.exit) {
+  opacity: 0;
+  height: 0;
+  transform: translateX(20px);
+  transition: 0.3s ease-in-out;
+}

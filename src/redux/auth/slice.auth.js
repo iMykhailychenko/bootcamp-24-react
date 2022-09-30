@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import { Status } from '../../constants/fetch-status';
+import { getProfileThunk } from '../profile/thunk.profile';
 
 import { authInitialState } from './initial-state.auth';
 import { loginThunk } from './thunk.auth';
@@ -22,6 +23,12 @@ const authSlice = createSlice({
     },
     [loginThunk.rejected]: state => {
       state.status = Status.Error;
+    },
+
+    [getProfileThunk.rejected]: state => {
+      state.status = Status.Error;
+      state.access_token = '';
+      state.token_type = '';
     },
   },
 });

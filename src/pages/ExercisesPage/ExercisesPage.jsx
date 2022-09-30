@@ -5,6 +5,9 @@ import { NavLink, Outlet } from 'react-router-dom';
 const subPages = [
   { href: 'users', title: 'Users list' },
   { href: 'counter', title: 'Counter' },
+  { href: 'render-prop', title: 'Render Prop' },
+  { href: 'hoc', title: 'HOC' },
+  { href: 'animations', title: 'Animations' },
 ];
 
 export const ExercisesPage = () => {
