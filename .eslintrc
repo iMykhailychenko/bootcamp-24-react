@@ -16,6 +16,7 @@
     "max-len": "off",
     "prefer-template": "off",
     "no-alert": "off",
+    "react/display-name": "off",
     "jsx-a11y/no-autofocus": "off",
     "react/jsx-fragments": "off",
     "function-paren-newline": "off",
