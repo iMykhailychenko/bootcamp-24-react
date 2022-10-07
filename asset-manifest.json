@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/bootcamp-24-react/static/css/main.f43cf355.css",
-    "main.js": "/bootcamp-24-react/static/js/main.d49cc672.js",
-    "static/js/35.9f23baa1.chunk.js": "/bootcamp-24-react/static/js/35.9f23baa1.chunk.js",
+    "main.js": "/bootcamp-24-react/static/js/main.fcca1d1d.js",
+    "static/js/35.1fd7368b.chunk.js": "/bootcamp-24-react/static/js/35.1fd7368b.chunk.js",
     "static/js/415.b6a9444e.chunk.js": "/bootcamp-24-react/static/js/415.b6a9444e.chunk.js",
     "static/css/563.8aa9cb99.chunk.css": "/bootcamp-24-react/static/css/563.8aa9cb99.chunk.css",
     "static/js/563.e839372a.chunk.js": "/bootcamp-24-react/static/js/563.e839372a.chunk.js",
@@ -24,8 +24,8 @@
     "static/media/713761_big_8857bc5285.jpeg": "/bootcamp-24-react/static/media/713761_big_8857bc5285.4a8a759c1673e3abd7cb.jpeg",
     "index.html": "/bootcamp-24-react/index.html",
     "main.f43cf355.css.map": "/bootcamp-24-react/static/css/main.f43cf355.css.map",
-    "main.d49cc672.js.map": "/bootcamp-24-react/static/js/main.d49cc672.js.map",
-    "35.9f23baa1.chunk.js.map": "/bootcamp-24-react/static/js/35.9f23baa1.chunk.js.map",
+    "main.fcca1d1d.js.map": "/bootcamp-24-react/static/js/main.fcca1d1d.js.map",
+    "35.1fd7368b.chunk.js.map": "/bootcamp-24-react/static/js/35.1fd7368b.chunk.js.map",
     "415.b6a9444e.chunk.js.map": "/bootcamp-24-react/static/js/415.b6a9444e.chunk.js.map",
     "563.8aa9cb99.chunk.css.map": "/bootcamp-24-react/static/css/563.8aa9cb99.chunk.css.map",
     "563.e839372a.chunk.js.map": "/bootcamp-24-react/static/js/563.e839372a.chunk.js.map",
@@ -46,6 +46,6 @@
   },
   "entrypoints": [
     "static/css/main.f43cf355.css",
-    "static/js/main.d49cc672.js"
+    "static/js/main.fcca1d1d.js"
   ]
 }
